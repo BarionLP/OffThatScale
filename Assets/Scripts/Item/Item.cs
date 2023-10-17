@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Ametrin.SpaceZombies.Items{
+namespace Ametrin.KunstBLL.Items{
     [CreateAssetMenu(menuName = "Item/Simple")]
     public class Item : ScriptableObject{
         [field: SerializeField] public GameObject MeshPrefab {get; private set;}

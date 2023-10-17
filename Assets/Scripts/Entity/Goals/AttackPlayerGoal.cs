@@ -1,7 +1,7 @@
-using Ametrin.SpaceZombies.Entity.Controller;
+using Ametrin.KunstBLL.Entity.Controller;
 using UnityEngine;
 
-namespace Ametrin.SpaceZombies.Entity.Goals{
+namespace Ametrin.KunstBLL.Entity.Goals{
     public sealed class AttackPlayerGoal : Goal{
         [SerializeField] private float LookDistance;
         [SerializeField] private LayerMask DetectionLayers;

@@ -3,7 +3,7 @@ using Ametrin.Utils;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Ametrin.SpaceZombies{
+namespace Ametrin.KunstBLL{
     public sealed class HealthManager : MonoBehaviour{
         [field: SerializeField] public float MaxHealth {get; private set;}
         public UnityEvent OnDeath;

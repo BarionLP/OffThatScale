@@ -1,8 +1,8 @@
-using Ametrin.SpaceZombies.Input;
-using Ametrin.SpaceZombies.Interaction;
+using Ametrin.KunstBLL.Input;
+using Ametrin.KunstBLL.Interaction;
 using UnityEngine;
 
-namespace Ametrin.SpaceZombies.Entity.Controller{
+namespace Ametrin.KunstBLL.Entity.Controller{
 
     [RequireComponent(typeof(PlayerManager))]
     public sealed class PlayerController : EntityController{

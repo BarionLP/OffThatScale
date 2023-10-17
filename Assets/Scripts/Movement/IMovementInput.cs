@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Ametrin.SpaceZombies.Movement{
+namespace Ametrin.KunstBLL.Movement{
     public interface IMovementInput{
         public bool IsMoving { get; }
         public Vector2 Move { get; }

@@ -1,8 +1,8 @@
 using Ametrin.Console;
-using Ametrin.SpaceZombies.Input;
+using Ametrin.KunstBLL.Input;
 using UnityEngine;
 
-namespace Ametrin.SpaceZombies.Entity{
+namespace Ametrin.KunstBLL.Entity{
     public sealed class PlayerManager : EntityManager{
         public static PlayerManager Instance;
 
@@ -12,15 +12,13 @@ namespace Ametrin.SpaceZombies.Entity{
                 Debug.LogError("Having Two Players...");
                 DestroyImmediate(Instance.gameObject);
             }
-            Instance = this;
-            
-            // Controller = base.Controller as PlayerController;
-            Health.AfterDamaged.AddListener(amount => Debug.Log($"Damaged by {amount}"));
-            Health.AfterHealed.AddListener(amount => Debug.Log($"Healed by {amount}"));
-            Health.OnDeath.AddListener(() => Debug.Log($"You Died"));
+            Instance = this;            
         }
 
         private void Start(){
+            Health.AfterDamaged.AddListener(amount => Debug.Log($"Damaged by {amount}"));
+            Health.AfterHealed.AddListener(amount => Debug.Log($"Healed by {amount}"));
+            Health.OnDeath.AddListener(() => Debug.Log($"You Died"));
 
             Cursor.lockState = CursorLockMode.Locked;
             if(!ConsoleManager.IsVisible) PlayerInput.Enable();

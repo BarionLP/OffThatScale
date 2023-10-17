@@ -1,9 +1,9 @@
 using System.Linq;
-using Ametrin.SpaceZombies.Entity.Goals;
+using Ametrin.KunstBLL.Entity.Goals;
 using Ametrin.Utils.Unity;
 using UnityEngine;
 
-namespace Ametrin.SpaceZombies.Entity.Controller{
+namespace Ametrin.KunstBLL.Entity.Controller{
     [RequireComponent(typeof(AlienManager))]
     public sealed class AlienController : EntityController{
         [SerializeField] private Vector2 StoppingDistance = new (2, 4);

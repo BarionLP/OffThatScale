@@ -2,7 +2,7 @@ using Ametrin.Utils.Unity;
 using UnityEngine;
 using UnityEngine.VFX;
 
-namespace Ametrin.SpaceZombies.Items{
+namespace Ametrin.KunstBLL.Items{
     public sealed class ItemHolder : MonoBehaviour{
         [SerializeField, InlineEditor] private Item _Item;
         // public UnityEvent OnInteract;

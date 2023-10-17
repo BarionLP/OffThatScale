@@ -1,8 +1,8 @@
-using Ametrin.SpaceZombies.Entity.Controller;
-using Ametrin.SpaceZombies.Movement;
+using Ametrin.KunstBLL.Entity.Controller;
+using Ametrin.KunstBLL.Movement;
 using UnityEngine;
 
-namespace Ametrin.SpaceZombies.Entity{
+namespace Ametrin.KunstBLL.Entity{
     public abstract class EntityManager : MonoBehaviour, IEntity{
         public EntityController Controller { get; protected set; }
         public MovementController MovementController { get; protected set; }

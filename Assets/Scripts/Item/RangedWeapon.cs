@@ -1,7 +1,7 @@
-using Ametrin.SpaceZombies.Items;
+using Ametrin.KunstBLL.Items;
 using UnityEngine;
 
-namespace Ametrin.SpaceZombies
+namespace Ametrin.KunstBLL
 {
 
     [CreateAssetMenu(menuName = "Item/Ranged Weapon")]

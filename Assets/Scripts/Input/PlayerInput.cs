@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Ametrin.SpaceZombies.Input{
+namespace Ametrin.KunstBLL.Input{
     public static class PlayerInput{
         private static readonly PlayerInputActions InputActions = new();
 

@@ -1,7 +1,7 @@
-using Ametrin.SpaceZombies.Entity.Controller;
+using Ametrin.KunstBLL.Entity.Controller;
 using UnityEngine;
 
-namespace Ametrin.SpaceZombies.Entity.Goals{
+namespace Ametrin.KunstBLL.Entity.Goals{
     public sealed class RandomStrollGoal : Goal{
         [SerializeField, Range(0, 1)] private float NewTargetPropability = 0.1f;
         [SerializeField, Range(5, 50)] private float Range = 0.1f;

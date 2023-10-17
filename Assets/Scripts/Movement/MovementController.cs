@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Ametrin.SpaceZombies.Movement{
+namespace Ametrin.KunstBLL.Movement{
 
     [RequireComponent(typeof(CharacterController))]
     public sealed class MovementController : MonoBehaviour{

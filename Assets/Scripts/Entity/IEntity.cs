@@ -1,8 +1,8 @@
-using Ametrin.SpaceZombies.Interaction;
-using Ametrin.SpaceZombies.Items;
+using Ametrin.KunstBLL.Interaction;
+using Ametrin.KunstBLL.Items;
 using UnityEngine;
 
-namespace Ametrin.SpaceZombies.Entity{
+namespace Ametrin.KunstBLL.Entity{
     public interface IEntity : IItemUser, IInteractor{
         public Transform transform { get; }
         public HealthManager Health { get; }

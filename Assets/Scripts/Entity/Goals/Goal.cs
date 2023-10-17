@@ -1,7 +1,7 @@
-using Ametrin.SpaceZombies.Entity.Controller;
+using Ametrin.KunstBLL.Entity.Controller;
 using UnityEngine;
 
-namespace Ametrin.SpaceZombies.Entity.Goals{
+namespace Ametrin.KunstBLL.Entity.Goals{
     public abstract class Goal : MonoBehaviour, IGoal{
         protected abstract bool ShouldTick(EntityController entity);
         public abstract void Tick(EntityController entity);

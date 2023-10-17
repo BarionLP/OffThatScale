@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Ametrin.SpaceZombies.Interaction{
+namespace Ametrin.KunstBLL.Interaction{
     [RequireComponent(typeof(Animator))]
     public sealed class DoorInteraction : MonoBehaviour{
         [SerializeField] private bool IsOpen = false;

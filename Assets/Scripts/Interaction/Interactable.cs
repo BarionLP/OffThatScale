@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Ametrin.SpaceZombies.Interaction{
+namespace Ametrin.KunstBLL.Interaction{
     public sealed class Interactable : MonoBehaviour, IInteractable{
         public UnityEvent<IInteractor> OnInteract = new();
 
