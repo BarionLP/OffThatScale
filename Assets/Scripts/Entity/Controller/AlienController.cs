@@ -29,16 +29,16 @@ namespace Ametrin.KunstBLL.Entity.Controller{
         }
 
         private void UpdateTarget(){
-            if(TargetPosition.y == INVALID_TARGET_Y) return;
+            if(TargetPosition is not Vector3 targetPosition) return;
 
-            if(IsMoving && TargetPosition.Approximately(transform.position, StoppingDistance.x)){
+            if(IsMoving && targetPosition.Approximately(transform.position, StoppingDistance.x)){
                 IsMoving = false;
                 return;
             }
 
-            if(!IsMoving && TargetPosition.Approximately(transform.position, StoppingDistance.y)) return;
+            if(!IsMoving && targetPosition.Approximately(transform.position, StoppingDistance.y)) return;
 
-            var direction = (TargetPosition - transform.position).normalized;
+            var direction = (targetPosition - transform.position).normalized;
             IsMoving = true;
             Move = new(direction.x, direction.z);
             Rotation = Quaternion.LookRotation(direction, transform.up);
@@ -46,7 +46,7 @@ namespace Ametrin.KunstBLL.Entity.Controller{
 
         private void OnDrawGizmosSelected(){
             Gizmos.color = Color.magenta;
-            Gizmos.DrawWireSphere(TargetPosition, 0.5f);
+            Gizmos.DrawWireSphere(TargetPosition.Value, 0.5f);
             Gizmos.DrawRay(transform.position, new(Move.x, 0, Move.y));
         }
     }

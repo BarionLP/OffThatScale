@@ -1,3 +1,4 @@
+using Ametrin.KunstBLL.Input;
 using UnityEngine;
 
 namespace Ametrin.KunstBLL.Movement{
@@ -36,6 +37,7 @@ namespace Ametrin.KunstBLL.Movement{
         }
         private void Start(){
             fallTimeoutDelta = FallTimeout;
+            if (!PlayerInput.IsZeroG) enabled = false;
         }
 
         private void Update(){

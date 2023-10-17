@@ -13,7 +13,6 @@ namespace Ametrin.KunstBLL.Items{
     }
 
     public interface IItemUser{
-        // All references must be availible on the server
         public Vector3 Position {get;}
     }
 

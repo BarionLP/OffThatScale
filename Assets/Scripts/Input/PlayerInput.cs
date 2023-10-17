@@ -7,18 +7,43 @@ namespace Ametrin.KunstBLL.Input{
 
         public static event Action OnInteract;
         public static event Action OnUse;
+        public static bool IsZeroG => Physics.gravity == Vector3.zero;
 
         static PlayerInput(){
-            InputActions.Player.Interact.performed += (_)=> OnInteract?.Invoke();
-            InputActions.Player.Use.performed += (_)=> OnUse?.Invoke();
+            InputActions.General.Interact.performed += (_)=> OnInteract?.Invoke();
+            InputActions.General.Use.performed += (_)=> OnUse?.Invoke();
         }
 
-        public static Vector2 Move => InputActions.Player.Move.ReadValue<Vector2>();
-        public static bool IsSprinting => InputActions.Player.Sprint.IsPressed();
-        public static bool ShouldJump => InputActions.Player.Jump.IsPressed();
-        public static Vector2 DeltaMouse => InputActions.Player.Look.ReadValue<Vector2>();
+        public static Vector2 Move => InputActions.Gravity.Move.ReadValue<Vector2>();
+        public static bool IsSprinting => InputActions.Gravity.Sprint.IsPressed();
+        public static bool ShouldJump => InputActions.Gravity.Jump.IsPressed();
+        public static Vector2 DeltaMouse => InputActions.General.Look.ReadValue<Vector2>();
 
-        public static void Enable() => InputActions.Enable();
+
+        public static void SwitchToGravity(){
+            DisableGravityless();
+            EnableGravity();
+        }
+        public static void SwitchToGravityless(){
+            DisableGravity();
+            EnableGravityless();
+        }
+
+        public static void Enable(){
+            EnableGeneral();
+            if(IsZeroG){
+                EnableGravityless();
+            }else{
+                EnableGravity();
+            }
+        }
+
+        public static void EnableGravity() => InputActions.Gravity.Enable();
+        public static void EnableGravityless() => InputActions.Gravity.Enable();
+        public static void EnableGeneral() => InputActions.General.Enable();
         public static void Disable() => InputActions.Disable();
+        public static void DisableGravity() => InputActions.Gravity.Disable();
+        public static void DisableGravityless() => InputActions.Gravity.Disable();
+        public static void DisableGeneral() => InputActions.General.Disable();
     }
 }

@@ -10,7 +10,7 @@ namespace Ametrin.KunstBLL.Entity{
         }
 
         private void OnDeath(){
-            // NetworkObject.Despawn();
+            
         }
     }
 }

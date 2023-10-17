@@ -5,10 +5,9 @@ using UnityEngine;
 namespace Ametrin.KunstBLL.Entity.Controller{
 
     [RequireComponent(typeof(EntityManager))]
-    public abstract class EntityController : MonoBehaviour, IMovementInput{
-        public const int INVALID_TARGET_Y = -100;
+    public abstract class EntityController : MonoBehaviour, IMovementInput, IGravitylessMovementInput{
         public bool ShouldShoot { get; set; }
-        public Vector3 TargetPosition { get; set; } = new (0, INVALID_TARGET_Y, 0);
+        public Vector3? TargetPosition { get; set; } = null;
         public abstract Vector3 LookDirection { get; }
 
         protected EntityManager Manager;
@@ -35,5 +34,8 @@ namespace Ametrin.KunstBLL.Entity.Controller{
         public virtual bool IsSprinting { get; protected set; }
         public virtual bool ShouldJump { get; protected set; }
         public virtual Quaternion Rotation { get; protected set; }
+        
+        public Vector3 Acceleration { get; protected set; }
+        public bool ShouldRoll { get; protected set; }
     }
 }

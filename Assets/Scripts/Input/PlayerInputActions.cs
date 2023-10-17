@@ -26,22 +26,13 @@ namespace Ametrin.KunstBLL.Input
     ""name"": ""PlayerInputActions"",
     ""maps"": [
         {
-            ""name"": ""Player"",
+            ""name"": ""Gravity"",
             ""id"": ""f62a4b92-ef5e-4175-8f4c-c9075429d32c"",
             ""actions"": [
                 {
                     ""name"": ""Move"",
                     ""type"": ""Value"",
                     ""id"": ""6bc1aaf4-b110-4ff7-891e-5b9fe6f32c4d"",
-                    ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
-                },
-                {
-                    ""name"": ""Look"",
-                    ""type"": ""Value"",
-                    ""id"": ""2690c379-f54d-45be-a724-414123833eb4"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -61,24 +52,6 @@ namespace Ametrin.KunstBLL.Input
                     ""type"": ""PassThrough"",
                     ""id"": ""980e881e-182c-404c-8cbf-3d09fdb48fef"",
                     ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Interact"",
-                    ""type"": ""Button"",
-                    ""id"": ""30958703-5b7d-442f-9eb4-070dd149fc7e"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Use"",
-                    ""type"": ""Button"",
-                    ""id"": ""043761e9-328f-4f5a-bf90-e9326f412e1b"",
-                    ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
@@ -197,28 +170,6 @@ namespace Ametrin.KunstBLL.Input
                 },
                 {
                     ""name"": """",
-                    ""id"": ""ed66cbff-2900-4a62-8896-696503cfcd31"",
-                    ""path"": ""<Pointer>/delta"",
-                    ""interactions"": """",
-                    ""processors"": ""InvertVector2(invertX=false)"",
-                    ""groups"": ""KeyboardMouse"",
-                    ""action"": ""Look"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""d1d171b6-19d8-47a6-ba3a-71b6a8e7b3c0"",
-                    ""path"": ""<Gamepad>/rightStick"",
-                    ""interactions"": """",
-                    ""processors"": ""InvertVector2(invertX=false),StickDeadzone,ScaleVector2(x=300,y=300)"",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""Look"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""1bd55a0b-761e-4ae4-89ae-8ec127e08a29"",
                     ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
@@ -260,10 +211,170 @@ namespace Ametrin.KunstBLL.Input
                     ""action"": ""Sprint"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""Gravityless"",
+            ""id"": ""f3e34e97-d2aa-4e49-87d8-61fb0710c650"",
+            ""actions"": [
+                {
+                    ""name"": ""Move"",
+                    ""type"": ""Value"",
+                    ""id"": ""10f1b4ea-1617-4e2a-94b3-abf8b9bd2f88"",
+                    ""expectedControlType"": ""Vector3"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Roll"",
+                    ""type"": ""Button"",
+                    ""id"": ""0887b68e-55aa-41a9-8e54-86354b136234"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": ""3D Vector"",
+                    ""id"": ""382ca2a5-1aa8-40ea-92d1-b52b732a1773"",
+                    ""path"": ""3DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""390c0da7-ccc2-4941-b36a-5b7402a72bb6"",
+                    ""path"": ""<Keyboard>/ctrl"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""b0a1556a-7f93-4e0e-a09d-e66eb795302c"",
+                    ""path"": ""<Keyboard>/shift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""64192494-e84d-4129-8f30-57f1b8c9745e"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""09f89770-d7ff-4a34-831e-81a542452c7d"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""forward"",
+                    ""id"": ""cd9520d1-eae4-46c4-a648-b9fe47aa564c"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""backward"",
+                    ""id"": ""630b7900-5aa4-4087-be0d-b123bba9135c"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 },
                 {
                     ""name"": """",
-                    ""id"": ""51ac8d4d-0ad9-434b-ac96-e22dab968dfc"",
+                    ""id"": ""e6c0fa21-0522-4856-9c9e-912e40daf69a"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Roll"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""General"",
+            ""id"": ""22f15836-6ce3-4973-9418-ea16c1d46471"",
+            ""actions"": [
+                {
+                    ""name"": ""Use"",
+                    ""type"": ""Button"",
+                    ""id"": ""602bda53-3a20-473c-8f62-4ce23578965d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""8926ed4b-31ef-4e55-98f3-78a34dc44998"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Look"",
+                    ""type"": ""Value"",
+                    ""id"": ""9ced05d3-b7c5-4a59-8de4-daaf6ac0cef7"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""87baf145-b094-43d6-adaa-5341c38569ce"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyboardMouse"",
+                    ""action"": ""Use"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c197ad8e-d34f-48c6-bebe-bd704890db48"",
                     ""path"": ""<Keyboard>/e"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -274,12 +385,23 @@ namespace Ametrin.KunstBLL.Input
                 },
                 {
                     ""name"": """",
-                    ""id"": ""07e554ad-a8b2-4745-8b80-cdf80622053b"",
-                    ""path"": ""<Mouse>/leftButton"",
+                    ""id"": ""ee1e6b56-2ac4-44d3-bacc-7d5f322f1241"",
+                    ""path"": ""<Pointer>/delta"",
                     ""interactions"": """",
-                    ""processors"": """",
+                    ""processors"": ""InvertVector2(invertX=false)"",
                     ""groups"": ""KeyboardMouse"",
-                    ""action"": ""Use"",
+                    ""action"": ""Look"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""abc2fe11-f952-4371-a610-f4013bfa879c"",
+                    ""path"": ""<Gamepad>/rightStick"",
+                    ""interactions"": """",
+                    ""processors"": ""InvertVector2(invertX=false),StickDeadzone,ScaleVector2(x=300,y=300)"",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Look"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -336,14 +458,20 @@ namespace Ametrin.KunstBLL.Input
         }
     ]
 }");
-            // Player
-            m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
-            m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
-            m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
-            m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
-            m_Player_Sprint = m_Player.FindAction("Sprint", throwIfNotFound: true);
-            m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
-            m_Player_Use = m_Player.FindAction("Use", throwIfNotFound: true);
+            // Gravity
+            m_Gravity = asset.FindActionMap("Gravity", throwIfNotFound: true);
+            m_Gravity_Move = m_Gravity.FindAction("Move", throwIfNotFound: true);
+            m_Gravity_Jump = m_Gravity.FindAction("Jump", throwIfNotFound: true);
+            m_Gravity_Sprint = m_Gravity.FindAction("Sprint", throwIfNotFound: true);
+            // Gravityless
+            m_Gravityless = asset.FindActionMap("Gravityless", throwIfNotFound: true);
+            m_Gravityless_Move = m_Gravityless.FindAction("Move", throwIfNotFound: true);
+            m_Gravityless_Roll = m_Gravityless.FindAction("Roll", throwIfNotFound: true);
+            // General
+            m_General = asset.FindActionMap("General", throwIfNotFound: true);
+            m_General_Use = m_General.FindAction("Use", throwIfNotFound: true);
+            m_General_Interact = m_General.FindAction("Interact", throwIfNotFound: true);
+            m_General_Look = m_General.FindAction("Look", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -402,91 +530,183 @@ namespace Ametrin.KunstBLL.Input
             return asset.FindBinding(bindingMask, out action);
         }
 
-        // Player
-        private readonly InputActionMap m_Player;
-        private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
-        private readonly InputAction m_Player_Move;
-        private readonly InputAction m_Player_Look;
-        private readonly InputAction m_Player_Jump;
-        private readonly InputAction m_Player_Sprint;
-        private readonly InputAction m_Player_Interact;
-        private readonly InputAction m_Player_Use;
-        public struct PlayerActions
+        // Gravity
+        private readonly InputActionMap m_Gravity;
+        private List<IGravityActions> m_GravityActionsCallbackInterfaces = new List<IGravityActions>();
+        private readonly InputAction m_Gravity_Move;
+        private readonly InputAction m_Gravity_Jump;
+        private readonly InputAction m_Gravity_Sprint;
+        public struct GravityActions
         {
             private @PlayerInputActions m_Wrapper;
-            public PlayerActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
-            public InputAction @Move => m_Wrapper.m_Player_Move;
-            public InputAction @Look => m_Wrapper.m_Player_Look;
-            public InputAction @Jump => m_Wrapper.m_Player_Jump;
-            public InputAction @Sprint => m_Wrapper.m_Player_Sprint;
-            public InputAction @Interact => m_Wrapper.m_Player_Interact;
-            public InputAction @Use => m_Wrapper.m_Player_Use;
-            public InputActionMap Get() { return m_Wrapper.m_Player; }
+            public GravityActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
+            public InputAction @Move => m_Wrapper.m_Gravity_Move;
+            public InputAction @Jump => m_Wrapper.m_Gravity_Jump;
+            public InputAction @Sprint => m_Wrapper.m_Gravity_Sprint;
+            public InputActionMap Get() { return m_Wrapper.m_Gravity; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
             public bool enabled => Get().enabled;
-            public static implicit operator InputActionMap(PlayerActions set) { return set.Get(); }
-            public void AddCallbacks(IPlayerActions instance)
+            public static implicit operator InputActionMap(GravityActions set) { return set.Get(); }
+            public void AddCallbacks(IGravityActions instance)
             {
-                if (instance == null || m_Wrapper.m_PlayerActionsCallbackInterfaces.Contains(instance)) return;
-                m_Wrapper.m_PlayerActionsCallbackInterfaces.Add(instance);
+                if (instance == null || m_Wrapper.m_GravityActionsCallbackInterfaces.Contains(instance)) return;
+                m_Wrapper.m_GravityActionsCallbackInterfaces.Add(instance);
                 @Move.started += instance.OnMove;
                 @Move.performed += instance.OnMove;
                 @Move.canceled += instance.OnMove;
-                @Look.started += instance.OnLook;
-                @Look.performed += instance.OnLook;
-                @Look.canceled += instance.OnLook;
                 @Jump.started += instance.OnJump;
                 @Jump.performed += instance.OnJump;
                 @Jump.canceled += instance.OnJump;
                 @Sprint.started += instance.OnSprint;
                 @Sprint.performed += instance.OnSprint;
                 @Sprint.canceled += instance.OnSprint;
-                @Interact.started += instance.OnInteract;
-                @Interact.performed += instance.OnInteract;
-                @Interact.canceled += instance.OnInteract;
-                @Use.started += instance.OnUse;
-                @Use.performed += instance.OnUse;
-                @Use.canceled += instance.OnUse;
             }
 
-            private void UnregisterCallbacks(IPlayerActions instance)
+            private void UnregisterCallbacks(IGravityActions instance)
             {
                 @Move.started -= instance.OnMove;
                 @Move.performed -= instance.OnMove;
                 @Move.canceled -= instance.OnMove;
-                @Look.started -= instance.OnLook;
-                @Look.performed -= instance.OnLook;
-                @Look.canceled -= instance.OnLook;
                 @Jump.started -= instance.OnJump;
                 @Jump.performed -= instance.OnJump;
                 @Jump.canceled -= instance.OnJump;
                 @Sprint.started -= instance.OnSprint;
                 @Sprint.performed -= instance.OnSprint;
                 @Sprint.canceled -= instance.OnSprint;
-                @Interact.started -= instance.OnInteract;
-                @Interact.performed -= instance.OnInteract;
-                @Interact.canceled -= instance.OnInteract;
-                @Use.started -= instance.OnUse;
-                @Use.performed -= instance.OnUse;
-                @Use.canceled -= instance.OnUse;
             }
 
-            public void RemoveCallbacks(IPlayerActions instance)
+            public void RemoveCallbacks(IGravityActions instance)
             {
-                if (m_Wrapper.m_PlayerActionsCallbackInterfaces.Remove(instance))
+                if (m_Wrapper.m_GravityActionsCallbackInterfaces.Remove(instance))
                     UnregisterCallbacks(instance);
             }
 
-            public void SetCallbacks(IPlayerActions instance)
+            public void SetCallbacks(IGravityActions instance)
             {
-                foreach (var item in m_Wrapper.m_PlayerActionsCallbackInterfaces)
+                foreach (var item in m_Wrapper.m_GravityActionsCallbackInterfaces)
                     UnregisterCallbacks(item);
-                m_Wrapper.m_PlayerActionsCallbackInterfaces.Clear();
+                m_Wrapper.m_GravityActionsCallbackInterfaces.Clear();
                 AddCallbacks(instance);
             }
         }
-        public PlayerActions @Player => new PlayerActions(this);
+        public GravityActions @Gravity => new GravityActions(this);
+
+        // Gravityless
+        private readonly InputActionMap m_Gravityless;
+        private List<IGravitylessActions> m_GravitylessActionsCallbackInterfaces = new List<IGravitylessActions>();
+        private readonly InputAction m_Gravityless_Move;
+        private readonly InputAction m_Gravityless_Roll;
+        public struct GravitylessActions
+        {
+            private @PlayerInputActions m_Wrapper;
+            public GravitylessActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
+            public InputAction @Move => m_Wrapper.m_Gravityless_Move;
+            public InputAction @Roll => m_Wrapper.m_Gravityless_Roll;
+            public InputActionMap Get() { return m_Wrapper.m_Gravityless; }
+            public void Enable() { Get().Enable(); }
+            public void Disable() { Get().Disable(); }
+            public bool enabled => Get().enabled;
+            public static implicit operator InputActionMap(GravitylessActions set) { return set.Get(); }
+            public void AddCallbacks(IGravitylessActions instance)
+            {
+                if (instance == null || m_Wrapper.m_GravitylessActionsCallbackInterfaces.Contains(instance)) return;
+                m_Wrapper.m_GravitylessActionsCallbackInterfaces.Add(instance);
+                @Move.started += instance.OnMove;
+                @Move.performed += instance.OnMove;
+                @Move.canceled += instance.OnMove;
+                @Roll.started += instance.OnRoll;
+                @Roll.performed += instance.OnRoll;
+                @Roll.canceled += instance.OnRoll;
+            }
+
+            private void UnregisterCallbacks(IGravitylessActions instance)
+            {
+                @Move.started -= instance.OnMove;
+                @Move.performed -= instance.OnMove;
+                @Move.canceled -= instance.OnMove;
+                @Roll.started -= instance.OnRoll;
+                @Roll.performed -= instance.OnRoll;
+                @Roll.canceled -= instance.OnRoll;
+            }
+
+            public void RemoveCallbacks(IGravitylessActions instance)
+            {
+                if (m_Wrapper.m_GravitylessActionsCallbackInterfaces.Remove(instance))
+                    UnregisterCallbacks(instance);
+            }
+
+            public void SetCallbacks(IGravitylessActions instance)
+            {
+                foreach (var item in m_Wrapper.m_GravitylessActionsCallbackInterfaces)
+                    UnregisterCallbacks(item);
+                m_Wrapper.m_GravitylessActionsCallbackInterfaces.Clear();
+                AddCallbacks(instance);
+            }
+        }
+        public GravitylessActions @Gravityless => new GravitylessActions(this);
+
+        // General
+        private readonly InputActionMap m_General;
+        private List<IGeneralActions> m_GeneralActionsCallbackInterfaces = new List<IGeneralActions>();
+        private readonly InputAction m_General_Use;
+        private readonly InputAction m_General_Interact;
+        private readonly InputAction m_General_Look;
+        public struct GeneralActions
+        {
+            private @PlayerInputActions m_Wrapper;
+            public GeneralActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
+            public InputAction @Use => m_Wrapper.m_General_Use;
+            public InputAction @Interact => m_Wrapper.m_General_Interact;
+            public InputAction @Look => m_Wrapper.m_General_Look;
+            public InputActionMap Get() { return m_Wrapper.m_General; }
+            public void Enable() { Get().Enable(); }
+            public void Disable() { Get().Disable(); }
+            public bool enabled => Get().enabled;
+            public static implicit operator InputActionMap(GeneralActions set) { return set.Get(); }
+            public void AddCallbacks(IGeneralActions instance)
+            {
+                if (instance == null || m_Wrapper.m_GeneralActionsCallbackInterfaces.Contains(instance)) return;
+                m_Wrapper.m_GeneralActionsCallbackInterfaces.Add(instance);
+                @Use.started += instance.OnUse;
+                @Use.performed += instance.OnUse;
+                @Use.canceled += instance.OnUse;
+                @Interact.started += instance.OnInteract;
+                @Interact.performed += instance.OnInteract;
+                @Interact.canceled += instance.OnInteract;
+                @Look.started += instance.OnLook;
+                @Look.performed += instance.OnLook;
+                @Look.canceled += instance.OnLook;
+            }
+
+            private void UnregisterCallbacks(IGeneralActions instance)
+            {
+                @Use.started -= instance.OnUse;
+                @Use.performed -= instance.OnUse;
+                @Use.canceled -= instance.OnUse;
+                @Interact.started -= instance.OnInteract;
+                @Interact.performed -= instance.OnInteract;
+                @Interact.canceled -= instance.OnInteract;
+                @Look.started -= instance.OnLook;
+                @Look.performed -= instance.OnLook;
+                @Look.canceled -= instance.OnLook;
+            }
+
+            public void RemoveCallbacks(IGeneralActions instance)
+            {
+                if (m_Wrapper.m_GeneralActionsCallbackInterfaces.Remove(instance))
+                    UnregisterCallbacks(instance);
+            }
+
+            public void SetCallbacks(IGeneralActions instance)
+            {
+                foreach (var item in m_Wrapper.m_GeneralActionsCallbackInterfaces)
+                    UnregisterCallbacks(item);
+                m_Wrapper.m_GeneralActionsCallbackInterfaces.Clear();
+                AddCallbacks(instance);
+            }
+        }
+        public GeneralActions @General => new GeneralActions(this);
         private int m_KeyboardMouseSchemeIndex = -1;
         public InputControlScheme KeyboardMouseScheme
         {
@@ -523,14 +743,22 @@ namespace Ametrin.KunstBLL.Input
                 return asset.controlSchemes[m_PS4ControllerSchemeIndex];
             }
         }
-        public interface IPlayerActions
+        public interface IGravityActions
         {
             void OnMove(InputAction.CallbackContext context);
-            void OnLook(InputAction.CallbackContext context);
             void OnJump(InputAction.CallbackContext context);
             void OnSprint(InputAction.CallbackContext context);
-            void OnInteract(InputAction.CallbackContext context);
+        }
+        public interface IGravitylessActions
+        {
+            void OnMove(InputAction.CallbackContext context);
+            void OnRoll(InputAction.CallbackContext context);
+        }
+        public interface IGeneralActions
+        {
             void OnUse(InputAction.CallbackContext context);
+            void OnInteract(InputAction.CallbackContext context);
+            void OnLook(InputAction.CallbackContext context);
         }
     }
 }
