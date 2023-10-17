@@ -9,7 +9,7 @@ namespace Ametrin.KunstBLL.Entity{
         protected override void Awake(){
             base.Awake();
             if(Instance != null){
-                Debug.LogError("Having Two Players...");
+                Debug.LogError("Two Players...");
                 DestroyImmediate(Instance.gameObject);
             }
             Instance = this;            
