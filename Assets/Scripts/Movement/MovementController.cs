@@ -34,10 +34,10 @@ namespace Ametrin.KunstBLL.Movement{
             Controller = GetComponent<CharacterController>();
             Animator = GetComponent<Animator>();
             if(!TryGetComponent(out Input)) Debug.LogWarning($"{name} has no MovementInput");
+            GameManager.OnGravityChange += UpdateState;
         }
         private void Start(){
             fallTimeoutDelta = FallTimeout;
-            if (!PlayerInput.IsZeroG) enabled = false;
         }
 
         private void Update(){
@@ -108,6 +108,14 @@ namespace Ametrin.KunstBLL.Movement{
         private void OnDrawGizmosSelected(){
             Gizmos.color = grounded ? Color.green : Color.red;
             Gizmos.DrawWireSphere(new Vector3(transform.position.x, transform.position.y - GroundedOffset, transform.position.z), GroundedRadius);
+        }
+
+        private void UpdateState(){
+            enabled = !PlayerInput.IsZeroG;
+        }
+
+        ~MovementController(){
+            GameManager.OnGravityChange -= UpdateState;
         }
 
         private readonly int animIDSpeed = Animator.StringToHash("Speed");

@@ -21,7 +21,10 @@ namespace Ametrin.KunstBLL.Entity{
             Health.OnDeath.AddListener(() => Debug.Log($"You Died"));
 
             Cursor.lockState = CursorLockMode.Locked;
-            if(!ConsoleManager.IsVisible) PlayerInput.Enable();
+            if(!ConsoleManager.IsVisible){
+                PlayerInput.Enable();
+            }
+
             ConsoleManager.OnHide += PlayerInput.Enable;
             ConsoleManager.OnShow += PlayerInput.Disable;
         }

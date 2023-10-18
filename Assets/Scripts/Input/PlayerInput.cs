@@ -18,6 +18,8 @@ namespace Ametrin.KunstBLL.Input{
         public static bool IsSprinting => InputActions.Gravity.Sprint.IsPressed();
         public static bool ShouldJump => InputActions.Gravity.Jump.IsPressed();
         public static Vector2 DeltaMouse => InputActions.General.Look.ReadValue<Vector2>();
+        public static Vector3 Acceleration => InputActions.Gravityless.Move.ReadValue<Vector3>();
+        public static bool ShouldRoll => InputActions.Gravityless.Roll.IsPressed();
 
 
         public static void SwitchToGravity(){
@@ -32,6 +34,7 @@ namespace Ametrin.KunstBLL.Input{
         public static void Enable(){
             EnableGeneral();
             if(IsZeroG){
+                Debug.Log("as");
                 EnableGravityless();
             }else{
                 EnableGravity();
@@ -39,11 +42,11 @@ namespace Ametrin.KunstBLL.Input{
         }
 
         public static void EnableGravity() => InputActions.Gravity.Enable();
-        public static void EnableGravityless() => InputActions.Gravity.Enable();
+        public static void EnableGravityless() => InputActions.Gravityless.Enable();
         public static void EnableGeneral() => InputActions.General.Enable();
         public static void Disable() => InputActions.Disable();
         public static void DisableGravity() => InputActions.Gravity.Disable();
-        public static void DisableGravityless() => InputActions.Gravity.Disable();
+        public static void DisableGravityless() => InputActions.Gravityless.Disable();
         public static void DisableGeneral() => InputActions.General.Disable();
     }
 }

@@ -2,8 +2,9 @@ using Ametrin.KunstBLL.Input;
 using UnityEngine;
 
 namespace Ametrin.KunstBLL.Movement{
+
     public sealed class GravitylessMovementController : MonoBehaviour{
-        private float animationBlend;
+        [SerializeField] private float AccelerationMultiplier = 2;
         private Vector3 velocity;
 
         private Animator Animator;
@@ -13,16 +14,28 @@ namespace Ametrin.KunstBLL.Movement{
         private void Awake(){
             Controller = GetComponent<CharacterController>();
             Animator = GetComponent<Animator>();
-            if (!TryGetComponent(out Input)) Debug.LogWarning($"{name} has no MovementInput");
+            if (!TryGetComponent(out Input)) Debug.LogWarning($"{name} has no GravitylessMovementInput");
+            GameManager.OnGravityChange += UpdateState;
         }
 
-        private void Start(){
-            if(!PlayerInput.IsZeroG) enabled = false; 
+        private void OnEnable(){
+            Animator.SetBool(animIDFreeFall, true);
         }
-    }
 
-    public interface IGravitylessMovementInput{
-        public Vector3 Acceleration { get; }
-        public bool ShouldRoll { get; }
+        private void Update(){
+            transform.rotation = Input.Rotation;
+            velocity += transform.rotation * Input.Acceleration * Time.deltaTime;
+            Controller.Move(velocity * Time.deltaTime);
+        }
+
+        private void UpdateState(){
+            enabled = PlayerInput.IsZeroG;
+        }
+
+        ~GravitylessMovementController(){
+            GameManager.OnGravityChange -= UpdateState;
+        }
+
+        private readonly int animIDFreeFall = Animator.StringToHash("FreeFall");
     }
 }

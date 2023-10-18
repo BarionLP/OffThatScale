@@ -35,7 +35,7 @@ namespace Ametrin.KunstBLL.Entity.Controller{
         public virtual bool ShouldJump { get; protected set; }
         public virtual Quaternion Rotation { get; protected set; }
         
-        public Vector3 Acceleration { get; protected set; }
-        public bool ShouldRoll { get; protected set; }
+        public virtual Vector3 Acceleration { get; protected set; }
+        public virtual bool ShouldRoll { get; protected set; }
     }
 }

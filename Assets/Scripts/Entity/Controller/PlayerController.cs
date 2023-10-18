@@ -50,5 +50,7 @@ namespace Ametrin.KunstBLL.Entity.Controller{
         public override Vector2 Move => PlayerInput.Move;
         public override bool IsSprinting => PlayerInput.IsSprinting;
         public override bool ShouldJump => PlayerInput.ShouldJump;
+        public override Vector3 Acceleration => PlayerInput.Acceleration;
+        public override bool ShouldRoll => PlayerInput.ShouldRoll;
     }
 }
