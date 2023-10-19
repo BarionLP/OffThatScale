@@ -17,6 +17,7 @@ namespace Ametrin.KunstBLL.Entity.Controller{
         protected virtual void Awake(){
             Manager = GetComponent<EntityManager>();
             MainHand = GetComponentInChildren<ItemHolder>();
+            GameManager.OnGravityChange += OnGravityChange;
         }
 
         protected virtual void Update(){
@@ -29,6 +30,13 @@ namespace Ametrin.KunstBLL.Entity.Controller{
             MainHand.Interact(Manager, LookDirection);
         }
 
+        protected virtual void OnGravityChange(){
+            if(!GameManager.IsZeroG){
+                UpVector = -Physics.gravity.normalized;
+            }
+            // transform.up = UpVector;
+        }
+
         public virtual bool IsMoving { get; protected set; }
         public virtual Vector2 Move { get; protected set; }
         public virtual bool IsSprinting { get; protected set; }
@@ -37,5 +45,11 @@ namespace Ametrin.KunstBLL.Entity.Controller{
         
         public virtual Vector3 Acceleration { get; protected set; }
         public virtual bool ShouldRoll { get; protected set; }
+        // [field: SerializeField] 
+        public virtual Vector3 UpVector { 
+            get => transform.up; 
+            set => transform.up = value; 
+            // get; set;
+        } //= Vector3.up ;
     }
 }

@@ -7,7 +7,6 @@ namespace Ametrin.KunstBLL.Input{
 
         public static event Action OnInteract;
         public static event Action OnUse;
-        public static bool IsZeroG => Physics.gravity == Vector3.zero;
 
         static PlayerInput(){
             InputActions.General.Interact.performed += (_)=> OnInteract?.Invoke();
@@ -33,20 +32,33 @@ namespace Ametrin.KunstBLL.Input{
 
         public static void Enable(){
             EnableGeneral();
-            if(IsZeroG){
-                Debug.Log("as");
+            if(GameManager.IsZeroG){
                 EnableGravityless();
             }else{
                 EnableGravity();
             }
+            GameManager.OnGravityChange += OnGravityChange;
         }
 
         public static void EnableGravity() => InputActions.Gravity.Enable();
         public static void EnableGravityless() => InputActions.Gravityless.Enable();
         public static void EnableGeneral() => InputActions.General.Enable();
-        public static void Disable() => InputActions.Disable();
+        public static void Disable(){
+            InputActions.Disable();
+            GameManager.OnGravityChange -= OnGravityChange;
+        }
+
         public static void DisableGravity() => InputActions.Gravity.Disable();
         public static void DisableGravityless() => InputActions.Gravityless.Disable();
         public static void DisableGeneral() => InputActions.General.Disable();
+
+        private static void OnGravityChange(){
+            if (GameManager.IsZeroG){
+                EnableGravityless();
+            }
+            else{
+                EnableGravity();
+            }
+        }
     }
 }

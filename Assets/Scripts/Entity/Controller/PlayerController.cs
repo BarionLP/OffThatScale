@@ -16,7 +16,6 @@ namespace Ametrin.KunstBLL.Entity.Controller{
 
         public override Vector3 LookDirection => Camera.transform.forward;
         private float pitch = 0;
-        private float yaw = 0;
         public Transform Camera {get; private set;}
 
         public void Start(){
@@ -28,14 +27,16 @@ namespace Ametrin.KunstBLL.Entity.Controller{
         protected override void Update(){
             base.Update();
             var deltaMouse = PlayerInput.DeltaMouse;
-            yaw += deltaMouse.x * MouseSensitivity * Time.deltaTime;
+            var deltaYaw = deltaMouse.x * MouseSensitivity * Time.deltaTime;
             pitch = Mathf.Clamp(pitch + (deltaMouse.y * MouseSensitivity * Time.deltaTime), CameraClamp.x, CameraClamp.y);
-
-            Rotation = Quaternion.Euler(0, yaw, 0);
+            Rotation = transform.localRotation * (PlayerInput.ShouldRoll ? Quaternion.Euler(0, 0, deltaYaw) : Quaternion.Euler(0, deltaYaw, 0));
         }
 
         private void LateUpdate(){
-            Camera.localEulerAngles = new(pitch, yaw, 0);
+            // var cameraRight = Vector3.Cross(Camera.forward, UpDirection).normalized;
+            // var pitchRotation = Quaternion.AngleAxis(pitch, cameraRight);
+            var pitchRotation = Quaternion.Euler(pitch, 0, 0);
+            Camera.localRotation = transform.rotation * pitchRotation;
             Camera.position = CameraRoot.position;
         }
 

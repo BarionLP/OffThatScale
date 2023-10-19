@@ -24,12 +24,12 @@ namespace Ametrin.KunstBLL.Movement{
 
         private void Update(){
             transform.rotation = Input.Rotation;
-            velocity += transform.rotation * Input.Acceleration * Time.deltaTime;
+            velocity += transform.rotation * Input.Acceleration * AccelerationMultiplier * Time.deltaTime;
             Controller.Move(velocity * Time.deltaTime);
         }
 
         private void UpdateState(){
-            enabled = PlayerInput.IsZeroG;
+            enabled = GameManager.IsZeroG;
         }
 
         ~GravitylessMovementController(){

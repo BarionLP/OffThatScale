@@ -111,7 +111,7 @@ namespace Ametrin.KunstBLL.Movement{
         }
 
         private void UpdateState(){
-            enabled = !PlayerInput.IsZeroG;
+            enabled = !GameManager.IsZeroG;
         }
 
         ~MovementController(){
