@@ -7,5 +7,6 @@ namespace Ametrin.KunstBLL.Movement
         public Quaternion Rotation { get; }
         public Vector3 UpVector { get; set; }
         public bool ShouldRoll { get; }
+        public bool ShouldSlowDown { get; }
     }
 }

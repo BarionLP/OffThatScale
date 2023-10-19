@@ -5,8 +5,7 @@ namespace Ametrin.KunstBLL.Movement{
 
     public sealed class GravitylessMovementController : MonoBehaviour{
         [SerializeField] private float AccelerationMultiplier = 2;
-        private Vector3 velocity;
-
+        // private Vector3 velocity;
         private Animator Animator;
         private CharacterController Controller;
         private IGravitylessMovementInput Input;
@@ -24,7 +23,12 @@ namespace Ametrin.KunstBLL.Movement{
 
         private void Update(){
             transform.rotation = Input.Rotation;
-            velocity += transform.rotation * Input.Acceleration * AccelerationMultiplier * Time.deltaTime;
+            var acceleration = transform.rotation * Input.Acceleration * AccelerationMultiplier * Time.deltaTime;
+            if(Input.ShouldSlowDown){
+                // (Controller.velocity.sqrMagnitude > 1 ? Controller.velocity.normalized : Controller.velocity) //should not be neccessary
+                acceleration -= AccelerationMultiplier * Time.deltaTime * Controller.velocity.normalized;
+            }
+            var velocity = Controller.velocity + acceleration;
             Controller.Move(velocity * Time.deltaTime);
         }
 

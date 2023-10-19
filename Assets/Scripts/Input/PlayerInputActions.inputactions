@@ -211,6 +211,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Stop",
+                    "type": "Button",
+                    "id": "0238da33-1874-4467-8936-150ba80b24d5",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -250,7 +259,7 @@
                 {
                     "name": "left",
                     "id": "64192494-e84d-4129-8f30-57f1b8c9745e",
-                    "path": "<Keyboard>/d",
+                    "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -261,7 +270,7 @@
                 {
                     "name": "right",
                     "id": "09f89770-d7ff-4a34-831e-81a542452c7d",
-                    "path": "<Keyboard>/a",
+                    "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -299,6 +308,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Roll",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "09986a66-6b8e-460f-9f6c-93459eefb79c",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Stop",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

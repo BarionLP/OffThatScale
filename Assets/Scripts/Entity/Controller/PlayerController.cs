@@ -26,9 +26,11 @@ namespace Ametrin.KunstBLL.Entity.Controller{
 
         protected override void Update(){
             base.Update();
+
             var deltaMouse = PlayerInput.DeltaMouse;
             var deltaYaw = deltaMouse.x * MouseSensitivity * Time.deltaTime;
             pitch = Mathf.Clamp(pitch + (deltaMouse.y * MouseSensitivity * Time.deltaTime), CameraClamp.x, CameraClamp.y);
+            
             Rotation = transform.localRotation * (PlayerInput.ShouldRoll ? Quaternion.Euler(0, 0, deltaYaw) : Quaternion.Euler(0, deltaYaw, 0));
         }
 
@@ -53,5 +55,6 @@ namespace Ametrin.KunstBLL.Entity.Controller{
         public override bool ShouldJump => PlayerInput.ShouldJump;
         public override Vector3 Acceleration => PlayerInput.Acceleration;
         public override bool ShouldRoll => PlayerInput.ShouldRoll;
+        public override bool ShouldSlowDown => PlayerInput.ShouldSlowDown;
     }
 }

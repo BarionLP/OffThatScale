@@ -125,7 +125,7 @@ MonoBehaviour:
   InteractionDistance: 1
   InteractionLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   CameraRoot: {fileID: 6098636054429749449}
   CameraClamp: {x: -80, y: 90}
   MouseSensitivity: 3

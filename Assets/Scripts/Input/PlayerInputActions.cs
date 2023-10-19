@@ -235,6 +235,15 @@ namespace Ametrin.KunstBLL.Input
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Stop"",
+                    ""type"": ""Button"",
+                    ""id"": ""0238da33-1874-4467-8936-150ba80b24d5"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -274,7 +283,7 @@ namespace Ametrin.KunstBLL.Input
                 {
                     ""name"": ""left"",
                     ""id"": ""64192494-e84d-4129-8f30-57f1b8c9745e"",
-                    ""path"": ""<Keyboard>/d"",
+                    ""path"": ""<Keyboard>/a"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -285,7 +294,7 @@ namespace Ametrin.KunstBLL.Input
                 {
                     ""name"": ""right"",
                     ""id"": ""09f89770-d7ff-4a34-831e-81a542452c7d"",
-                    ""path"": ""<Keyboard>/a"",
+                    ""path"": ""<Keyboard>/d"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -323,6 +332,17 @@ namespace Ametrin.KunstBLL.Input
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Roll"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""09986a66-6b8e-460f-9f6c-93459eefb79c"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Stop"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -467,6 +487,7 @@ namespace Ametrin.KunstBLL.Input
             m_Gravityless = asset.FindActionMap("Gravityless", throwIfNotFound: true);
             m_Gravityless_Move = m_Gravityless.FindAction("Move", throwIfNotFound: true);
             m_Gravityless_Roll = m_Gravityless.FindAction("Roll", throwIfNotFound: true);
+            m_Gravityless_Stop = m_Gravityless.FindAction("Stop", throwIfNotFound: true);
             // General
             m_General = asset.FindActionMap("General", throwIfNotFound: true);
             m_General_Use = m_General.FindAction("Use", throwIfNotFound: true);
@@ -597,12 +618,14 @@ namespace Ametrin.KunstBLL.Input
         private List<IGravitylessActions> m_GravitylessActionsCallbackInterfaces = new List<IGravitylessActions>();
         private readonly InputAction m_Gravityless_Move;
         private readonly InputAction m_Gravityless_Roll;
+        private readonly InputAction m_Gravityless_Stop;
         public struct GravitylessActions
         {
             private @PlayerInputActions m_Wrapper;
             public GravitylessActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
             public InputAction @Move => m_Wrapper.m_Gravityless_Move;
             public InputAction @Roll => m_Wrapper.m_Gravityless_Roll;
+            public InputAction @Stop => m_Wrapper.m_Gravityless_Stop;
             public InputActionMap Get() { return m_Wrapper.m_Gravityless; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -618,6 +641,9 @@ namespace Ametrin.KunstBLL.Input
                 @Roll.started += instance.OnRoll;
                 @Roll.performed += instance.OnRoll;
                 @Roll.canceled += instance.OnRoll;
+                @Stop.started += instance.OnStop;
+                @Stop.performed += instance.OnStop;
+                @Stop.canceled += instance.OnStop;
             }
 
             private void UnregisterCallbacks(IGravitylessActions instance)
@@ -628,6 +654,9 @@ namespace Ametrin.KunstBLL.Input
                 @Roll.started -= instance.OnRoll;
                 @Roll.performed -= instance.OnRoll;
                 @Roll.canceled -= instance.OnRoll;
+                @Stop.started -= instance.OnStop;
+                @Stop.performed -= instance.OnStop;
+                @Stop.canceled -= instance.OnStop;
             }
 
             public void RemoveCallbacks(IGravitylessActions instance)
@@ -753,6 +782,7 @@ namespace Ametrin.KunstBLL.Input
         {
             void OnMove(InputAction.CallbackContext context);
             void OnRoll(InputAction.CallbackContext context);
+            void OnStop(InputAction.CallbackContext context);
         }
         public interface IGeneralActions
         {

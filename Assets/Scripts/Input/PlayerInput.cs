@@ -19,6 +19,7 @@ namespace Ametrin.KunstBLL.Input{
         public static Vector2 DeltaMouse => InputActions.General.Look.ReadValue<Vector2>();
         public static Vector3 Acceleration => InputActions.Gravityless.Move.ReadValue<Vector3>();
         public static bool ShouldRoll => InputActions.Gravityless.Roll.IsPressed();
+        public static bool ShouldSlowDown => InputActions.Gravityless.Stop.IsPressed();
 
 
         public static void SwitchToGravity(){
@@ -55,8 +56,7 @@ namespace Ametrin.KunstBLL.Input{
         private static void OnGravityChange(){
             if (GameManager.IsZeroG){
                 EnableGravityless();
-            }
-            else{
+            } else{
                 EnableGravity();
             }
         }

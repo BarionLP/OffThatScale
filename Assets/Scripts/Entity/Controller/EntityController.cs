@@ -45,6 +45,7 @@ namespace Ametrin.KunstBLL.Entity.Controller{
         
         public virtual Vector3 Acceleration { get; protected set; }
         public virtual bool ShouldRoll { get; protected set; }
+        public virtual bool ShouldSlowDown { get; protected set; }
         // [field: SerializeField] 
         public virtual Vector3 UpVector { 
             get => transform.up; 
