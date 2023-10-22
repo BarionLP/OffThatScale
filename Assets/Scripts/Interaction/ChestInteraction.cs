@@ -1,11 +1,12 @@
 using UnityEngine;
 
 namespace Ametrin.KunstBLL.Interaction{
+    
     [RequireComponent(typeof(Animator))]
-    public sealed class DoorInteraction : MonoBehaviour, IInteractable{
+    public sealed class ChestInteraction : MonoBehaviour, IInteractable{
         [SerializeField] private bool IsOpen = false;
         private Animator Animator;
-        
+
         private void Awake(){
             Animator = GetComponent<Animator>();
         }
@@ -18,7 +19,7 @@ namespace Ametrin.KunstBLL.Interaction{
         private void UpdateAnimation(){
             if (IsOpen){
                 Animator.SetTrigger(OpenTriggerID);
-            }else {
+            } else{
                 Animator.SetTrigger(CloseTriggerID);
             }
         }
