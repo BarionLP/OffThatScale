@@ -8,9 +8,12 @@ namespace Ametrin.KunstBLL.Interaction{
         [SerializeField] private Transform target;
         [SerializeField] private bool IsOpen = false;
         [SerializeField] private float Duration = 1;
-        [SerializeField] private Vector3 LocalAxis = Vector3.up;
-        [SerializeField] private float TargetAngle = 90;
-        private float currentAngle = 0f;
+        [SerializeField, Setable(nameof(SetClosedState))] private Quaternion ClosedState;
+        [SerializeField, Setable(nameof(SetOpenState))] private Quaternion OpenState;
+        // [SerializeField] private Vector3 LocalAxis = Vector3.up;
+        // [SerializeField] private float OpenedAngle = 90;
+        // [SerializeField] private float ClosedAngle = 0;
+        // // private float currentAngle = 0f;
 
         private void Start(){
             StartCoroutine(Animate());
@@ -22,39 +25,54 @@ namespace Ametrin.KunstBLL.Interaction{
         }
 
         private IEnumerator Animate(){
-            var targetAngle = IsOpen ? 0 : TargetAngle;
-            var angle = targetAngle - currentAngle;
-            print(angle);
-            var rotationSpeed = angle / Duration;
-            print(rotationSpeed);
-            var timer = Duration;
-            while(timer > 0){
-                var step = rotationSpeed * Time.deltaTime;
-                print(step);
-                // step = Mathf.Clamp(step, -Mathf.Abs(angle), Mathf.Abs(angle));
-                target.Rotate(LocalAxis, step, Space.Self);
-                currentAngle += step;
-                timer -= Time.deltaTime;
-                yield return new WaitForEndOfFrame();
-            }
+            var startRotation = target.localRotation;
+            // var currentAngle = GetRotationAroundAxis(startRotation, LocalAxis);
 
+            // var targetAngle = (IsOpen ? OpenedAngle : ClosedAngle);
+            // var angle = targetAngle - currentAngle;
+            // var endRotation = startRotation * Quaternion.AngleAxis(angle, LocalAxis);
+            var endRotation = IsOpen ? OpenState : ClosedState;
+            // print($"Current: {currentAngle} Target: {targetAngle} Rotating {angle}");
 
-            // var startRotation = target.localRotation;
-            // var worldAxis = target.TransformDirection(LocalAxis);
-            // var endRotation = Quaternion.AngleAxis(TargetAngle, worldAxis) * startRotation;
             // var elapsedTime = 0f;
-            // print(startRotation.eulerAngles);
-            // print(endRotation.eulerAngles);
-            // print(target.localEulerAngles);
-            // print(target.eulerAngles);
-
             // while (elapsedTime < Duration){
-            //     target.localRotation = Quaternion.Slerp(startRotation, endRotation, elapsedTime / Duration);
+            //     target.localRotation = Quaternion.Slerp(startRotation, endRotation, SmoothStep(elapsedTime / Duration));
             //     elapsedTime += Time.deltaTime;
             //     yield return null;
             // }
-
             // target.localRotation = endRotation;
+
+            var elapsedTime = 0f;
+            while (elapsedTime < Duration){
+                target.localRotation = Quaternion.Slerp(startRotation, endRotation, SmoothStep(elapsedTime / Duration));
+                elapsedTime += Time.deltaTime;
+                yield return null;
+            }
+
+            target.localRotation = endRotation;
+
+            static float SmoothStep(float t) => Mathf.Clamp01(t * t * (3f - 2f * t));
         }
+
+        // public static float GetRotationAroundAxis(Quaternion quaternion, Vector3 axis){
+        //     var difference = Quaternion.Inverse(Quaternion.identity) * quaternion;
+        //     difference.ToAngleAxis(out var angle, out var rotationAxis);
+
+        //     if (Vector3.Dot(rotationAxis, axis) < 0){
+        //         angle = -angle;
+        //     }
+
+        //     return angle;
+        // }
+
+        #if UNITY_EDITOR
+        private void SetClosedState(){
+            ClosedState = target.localRotation;
+        }
+        
+        public void SetOpenState(){
+            OpenState = target.localRotation;
+        }
+        #endif
     }
 }

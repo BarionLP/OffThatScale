@@ -18,7 +18,7 @@ namespace Ametrin.KunstBLL.Movement{
         }
 
         private void OnEnable(){
-            Animator.SetBool(animIDFreeFall, true);
+            // Animator.SetBool(animIDFreeFall, true);
         }
 
         private void Update(){
