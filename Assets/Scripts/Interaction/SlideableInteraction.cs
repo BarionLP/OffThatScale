@@ -2,12 +2,12 @@ using System.Collections;
 using UnityEngine;
 
 namespace Ametrin.KunstBLL.Interaction{
-    public sealed class OpenableInteraction : MonoBehaviour, IInteractable{
+    public sealed class SlideableInteraction : MonoBehaviour, IInteractable{
         [SerializeField] private Transform target;
         [SerializeField] private bool IsOpen = false;
         [SerializeField] private float Duration = 1;
-        [SerializeField, Setable(nameof(SetClosedState))] private Quaternion ClosedState;
-        [SerializeField, Setable(nameof(SetOpenState))] private Quaternion OpenState;
+        [SerializeField, Setable(nameof(SetClosedState))] private Vector3 ClosedState;
+        [SerializeField, Setable(nameof(SetOpenState))] private Vector3 OpenState;
 
         private void Start(){
             StartCoroutine(Animate());
@@ -19,27 +19,27 @@ namespace Ametrin.KunstBLL.Interaction{
         }
 
         private IEnumerator Animate(){
-            var startRotation = target.localRotation;
+            var startRotation = target.localPosition;
             var endRotation = IsOpen ? OpenState : ClosedState;
 
             var elapsedTime = 0f;
             while (elapsedTime < Duration){
-                target.localRotation = Quaternion.Slerp(startRotation, endRotation, SmoothStep(elapsedTime / Duration));
+                target.localPosition = Vector3.Lerp(startRotation, endRotation, SmoothStep(elapsedTime / Duration));
                 elapsedTime += Time.deltaTime;
                 yield return null;
             }
 
-            target.localRotation = endRotation;
+            target.localPosition = endRotation;
 
             static float SmoothStep(float t) => Mathf.Clamp01(t * t * (3f - 2f * t));
         }
 
         private void SetClosedState(){
-            ClosedState = target.localRotation;
+            ClosedState = target.localPosition;
         }
-        
+
         public void SetOpenState(){
-            OpenState = target.localRotation;
+            OpenState = target.localPosition;
         }
     }
 }

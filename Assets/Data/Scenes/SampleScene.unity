@@ -1452,7 +1452,23 @@ PrefabInstance:
       propertyPath: m_Name
       value: WallDoor
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 1950706897992292905, guid: 46b991ae271731d4fb5718164b1c04c0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.482
+      objectReference: {fileID: 0}
+    - target: {fileID: 3817181772064315386, guid: 46b991ae271731d4fb5718164b1c04c0,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6259507121995813200, guid: 46b991ae271731d4fb5718164b1c04c0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 1841312682765369735, guid: 46b991ae271731d4fb5718164b1c04c0, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
