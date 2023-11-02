@@ -29,17 +29,19 @@ namespace Ametrin.KunstBLL.Entity.Controller{
 
             var deltaMouse = PlayerInput.DeltaMouse;
             var deltaYaw = deltaMouse.x * MouseSensitivity * Time.deltaTime;
-            pitch = Mathf.Clamp(pitch + (deltaMouse.y * MouseSensitivity * Time.deltaTime), CameraClamp.x, CameraClamp.y);
-            
+            var deltaPitch = deltaMouse.y * MouseSensitivity * Time.deltaTime;
+
             Rotation = transform.localRotation * (PlayerInput.ShouldRoll ? Quaternion.Euler(0, 0, deltaYaw) : Quaternion.Euler(0, deltaYaw, 0));
+            if(PlayerInput.ShouldRoll){
+                Rotation *= Quaternion.Euler(deltaPitch, 0, 0);
+            }else{
+                pitch = Mathf.Clamp(pitch + deltaPitch, CameraClamp.x, CameraClamp.y);
+            }
         }
 
         private void LateUpdate(){
-            // var cameraRight = Vector3.Cross(Camera.forward, UpDirection).normalized;
-            // var pitchRotation = Quaternion.AngleAxis(pitch, cameraRight);
-            var pitchRotation = Quaternion.Euler(pitch, 0, 0);
-            Camera.localRotation = transform.rotation * pitchRotation;
             Camera.position = CameraRoot.position;
+            Camera.localRotation = transform.rotation * Quaternion.Euler(pitch, 0, 0);
         }
 
         private void Interact(){

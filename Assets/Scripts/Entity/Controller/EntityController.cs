@@ -34,7 +34,6 @@ namespace Ametrin.KunstBLL.Entity.Controller{
             if(!GameManager.IsZeroG){
                 UpVector = -Physics.gravity.normalized;
             }
-            // transform.up = UpVector;
         }
 
         public virtual bool IsMoving { get; protected set; }
@@ -46,11 +45,9 @@ namespace Ametrin.KunstBLL.Entity.Controller{
         public virtual Vector3 Acceleration { get; protected set; }
         public virtual bool ShouldRoll { get; protected set; }
         public virtual bool ShouldSlowDown { get; protected set; }
-        // [field: SerializeField] 
         public virtual Vector3 UpVector { 
             get => transform.up; 
             set => transform.up = value; 
-            // get; set;
-        } //= Vector3.up ;
+        }
     }
 }

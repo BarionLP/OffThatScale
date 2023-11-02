@@ -6,8 +6,10 @@ namespace Ametrin.KunstBLL{
         public static event Action OnGravityChange;
         public static bool IsZeroG => Physics.gravity == Vector3.zero;
 
+        [SerializeField] private Vector3 InitalGravity;
+
         private void Awake(){
-            Physics.gravity = Vector3.zero;
+            Physics.gravity = InitalGravity;
             OnGravityChange?.Invoke();
         }
     }
