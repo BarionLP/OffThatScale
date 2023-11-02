@@ -35,11 +35,20 @@
       "hash": "2b1e38fa0ad943fdc9c42ad49c9cd97d47ff5d43"
     },
     "com.coffee.upm-git-extension": {
-      "version": "https://github.com/mob-sakai/UpmGitExtension.git",
+      "version": "https://github.com/mob-sakai/UpmGitExtension.git#2.0.4",
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "d0c1cbb5415f5accf6a1d49d1dc91cf7d4fb11b9"
+      "hash": "98001185fe1039a30961b2bc6ef4ac6c2eb764da"
+    },
+    "com.jimmycushnie.noisynodes": {
+      "version": "https://github.com/JimmyCushnie/Noisy-Nodes.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.unity.shadergraph": "7.1.8"
+      },
+      "hash": "1f212c268860dc1dc260bbd60d03246908508b79"
     },
     "com.unity.animation.rigging": {
       "version": "1.2.1",
