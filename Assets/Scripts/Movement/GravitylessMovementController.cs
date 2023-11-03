@@ -24,10 +24,10 @@ namespace Ametrin.KunstBLL.Movement{
 
         private void Update(){
             transform.rotation = Input.Rotation;
-            var acceleration = transform.rotation * Input.Acceleration * AccelerationMultiplier;// * Time.deltaTime;
+            var acceleration = transform.rotation * Input.Acceleration * AccelerationMultiplier;
             if(Input.ShouldSlowDown){
                 // (Controller.velocity.sqrMagnitude > 1 ? Controller.velocity.normalized : Controller.velocity) //should not be neccessary
-                acceleration -= AccelerationMultiplier * Time.deltaTime * Rigidbody.velocity.normalized;
+                acceleration -= AccelerationMultiplier * Rigidbody.velocity.normalized;
             }
             // var velocity = Rigidbody.velocity + acceleration;
             Rigidbody.AddForce(acceleration);

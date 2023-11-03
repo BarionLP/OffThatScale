@@ -9,13 +9,21 @@ namespace Ametrin.KunstBLL.Interaction{
         [SerializeField, Setable(nameof(SetClosedState))] private Vector3 ClosedState;
         [SerializeField, Setable(nameof(SetOpenState))] private Vector3 OpenState;
 
+        private AudioSource SFX;
+
+        private void Awake(){
+            TryGetComponent(out SFX);
+        }
+
         private void Start(){
             StartCoroutine(Animate());
         }
 
         public void Interact(IInteractor interactor){
             IsOpen = !IsOpen;
+            StopCoroutine(nameof(Animate));
             StartCoroutine(Animate());
+            SFX?.Play();
         }
 
         private IEnumerator Animate(){

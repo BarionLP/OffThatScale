@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Ametrin.KunstBLL{
+namespace Ametrin.KunstBLL.VFX{
     public sealed class LightFlickering : MonoBehaviour{
         [SerializeField] private float minIntensity = 0.5f;
         [SerializeField] private float maxIntensity = 1f;
