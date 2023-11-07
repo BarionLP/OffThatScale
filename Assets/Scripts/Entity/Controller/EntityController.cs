@@ -49,5 +49,6 @@ namespace Ametrin.KunstBLL.Entity.Controller{
             get => transform.up; 
             set => transform.up = value; 
         }
+        public virtual Quaternion CameraRotation => Rotation;
     }
 }

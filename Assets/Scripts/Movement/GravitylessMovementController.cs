@@ -6,7 +6,6 @@ namespace Ametrin.KunstBLL.Movement{
     [RequireComponent(typeof(Rigidbody))]
     public sealed class GravitylessMovementController : MonoBehaviour{
         [SerializeField] private float AccelerationMultiplier = 2;
-        // private Vector3 velocity;
         private Animator Animator;
         private Rigidbody Rigidbody;
         private IGravitylessMovementInput Input;
@@ -19,17 +18,16 @@ namespace Ametrin.KunstBLL.Movement{
         }
 
         private void OnEnable(){
-            // Animator.SetBool(animIDFreeFall, true);
+            Animator.SetBool(animIDFloating, true);
         }
 
         private void Update(){
             transform.rotation = Input.Rotation;
-            var acceleration = transform.rotation * Input.Acceleration * AccelerationMultiplier;
+            var acceleration = Input.CameraRotation * Input.Acceleration * AccelerationMultiplier;
             if(Input.ShouldSlowDown){
                 // (Controller.velocity.sqrMagnitude > 1 ? Controller.velocity.normalized : Controller.velocity) //should not be neccessary
                 acceleration -= AccelerationMultiplier * Rigidbody.velocity.normalized;
             }
-            // var velocity = Rigidbody.velocity + acceleration;
             Rigidbody.AddForce(acceleration);
         }
 
@@ -41,6 +39,6 @@ namespace Ametrin.KunstBLL.Movement{
             GameManager.OnGravityChange -= UpdateState;
         }
 
-        private readonly int animIDFreeFall = Animator.StringToHash("FreeFall");
+        private readonly int animIDFloating = Animator.StringToHash("Floating");
     }
 }

@@ -58,5 +58,6 @@ namespace Ametrin.KunstBLL.Entity.Controller{
         public override Vector3 Acceleration => PlayerInput.Acceleration;
         public override bool ShouldRoll => PlayerInput.ShouldRoll;
         public override bool ShouldSlowDown => PlayerInput.ShouldSlowDown;
+        public override Quaternion CameraRotation => Camera.rotation;
     }
 }

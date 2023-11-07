@@ -42,6 +42,21 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 9c8d79123ea03004fa5dabc50f41047e,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.05
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 9c8d79123ea03004fa5dabc50f41047e,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.05
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 9c8d79123ea03004fa5dabc50f41047e,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.05
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 9c8d79123ea03004fa5dabc50f41047e,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -53,7 +68,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 9c8d79123ea03004fa5dabc50f41047e,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.01
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9c8d79123ea03004fa5dabc50f41047e,
         type: 3}
@@ -174,7 +189,7 @@ MonoBehaviour:
   target: {fileID: 5389885563573313872}
   IsOpen: 0
   Duration: 1
-  ClosedState: {x: 0, y: 1.05, z: 0.01}
+  ClosedState: {x: 0, y: 1.05, z: 0}
   OpenState: {x: 0, y: 1.05, z: 1.5}
 --- !u!82 &1159457841686927788
 AudioSource:
