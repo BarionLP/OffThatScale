@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Ametrin.KunstBLL.Interaction{
     public sealed class OpenableInteraction : MonoBehaviour, IInteractable{
@@ -8,12 +9,8 @@ namespace Ametrin.KunstBLL.Interaction{
         [SerializeField] private float Duration = 1;
         [SerializeField, Setable(nameof(SetClosedState))] private Quaternion ClosedState;
         [SerializeField, Setable(nameof(SetOpenState))] private Quaternion OpenState;
-
-        private AudioSource SFX;
-
-        private void Awake(){
-            TryGetComponent(out SFX);
-        }
+        public UnityEvent OnOpened = new();
+        public UnityEvent OnClosed = new();
 
         private void Start(){
             StartCoroutine(Animate());
@@ -23,7 +20,11 @@ namespace Ametrin.KunstBLL.Interaction{
             IsOpen = !IsOpen;
             StopCoroutine(nameof(Animate));
             StartCoroutine(Animate());
-            SFX?.Play();
+            if(IsOpen){
+                OnOpened.Invoke(); 
+            }else{
+                OnClosed.Invoke();
+            }  
         }
 
         private IEnumerator Animate(){
