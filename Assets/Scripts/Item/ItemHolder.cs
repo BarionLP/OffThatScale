@@ -18,7 +18,8 @@ namespace Ametrin.KunstBLL.Items{
                 if (_Item.MeshPrefab == null) return;
 
                 ItemInstance = Instantiate(_Item.MeshPrefab, transform);
-                
+                ItemInstance.GetComponent<Collider>().enabled = false;
+
                 if(ItemInstance.TryGetComponent<VisualEffect>(out var effect)){
                     Effect = effect;
                 }

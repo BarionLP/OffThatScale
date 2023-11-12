@@ -1,3 +1,4 @@
+using Ametrin.KunstBLL.Items;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -11,7 +12,7 @@ namespace Ametrin.KunstBLL.Interaction{
     }
 
     public interface IInteractor{
-    
+        void PickUp(Item item);
     }
 
     public interface IInteractable{

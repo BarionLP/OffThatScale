@@ -1,17 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
 namespace Ametrin.KunstBLL{
-    public sealed class ShipScreenController : MonoBehaviour{
-        [SerializeField] private float MaxShipWeight;
-        [SerializeField] private float CurrentShipWeight;
-        
+    public sealed class ShipScreenController : MonoBehaviour{      
         [SerializeField] private TextMeshProUGUI Text;
 
-        private void Awake(){
-            Text.text = $"Caution\nShip Damaged\nReduce Weight\n{CurrentShipWeight}/{MaxShipWeight}";
+        public void UpdateText(float currentWeight, float maxWeight){
+            Text.text = $"Caution\nShip Damaged\nReduce Weight\n{currentWeight}/{maxWeight}";
         }
     }
 }

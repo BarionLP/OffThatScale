@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5656740545472305369}
   - component: {fileID: 323745299194055416}
-  - component: {fileID: 3197007375142904774}
   - component: {fileID: 2187721573804666327}
+  - component: {fileID: 3197007375142904774}
   m_Layer: 0
   m_Name: Point Light
   m_TagString: Untagged
@@ -96,6 +96,21 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &2187721573804666327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 915622291367406279}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4b738aca3bd4e64f835e7c66c57bb19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minIntensity: 1
+  maxIntensity: 2.1
+  flickerSpeed: 0.2
 --- !u!114 &3197007375142904774
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -119,21 +134,6 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
---- !u!114 &2187721573804666327
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 915622291367406279}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4b738aca3bd4e64f835e7c66c57bb19, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minIntensity: 1
-  maxIntensity: 2.1
-  flickerSpeed: 0.2
 --- !u!1 &7761100248894209533
 GameObject:
   m_ObjectHideFlags: 0

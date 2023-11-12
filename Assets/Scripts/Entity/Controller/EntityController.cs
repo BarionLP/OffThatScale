@@ -11,7 +11,7 @@ namespace Ametrin.KunstBLL.Entity.Controller{
         public abstract Vector3 LookDirection { get; }
 
         protected EntityManager Manager;
-        private ItemHolder MainHand;
+        public ItemHolder MainHand {get; private set;}
         private float ItemCooldown;
 
         protected virtual void Awake(){

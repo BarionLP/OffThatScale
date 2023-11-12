@@ -1,4 +1,5 @@
 using Ametrin.KunstBLL.Entity.Controller;
+using Ametrin.KunstBLL.Items;
 using Ametrin.KunstBLL.Movement;
 using UnityEngine;
 
@@ -7,6 +8,11 @@ namespace Ametrin.KunstBLL.Entity{
         public EntityController Controller { get; protected set; }
         public MovementController MovementController { get; protected set; }
         public HealthManager Health { get; protected set; }
+
+        public void PickUp(Item item) {
+            Controller.MainHand.Item = item;
+            print("picked");
+        }
 
         protected virtual void Awake(){
             Controller = GetComponent<EntityController>();
