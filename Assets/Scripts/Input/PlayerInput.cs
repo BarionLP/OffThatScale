@@ -7,10 +7,12 @@ namespace Ametrin.KunstBLL.Input{
 
         public static event Action OnInteract;
         public static event Action OnUse;
+        public static event Action OnThrow;
 
         static PlayerInput(){
             InputActions.General.Interact.performed += (_)=> OnInteract?.Invoke();
             InputActions.General.Use.performed += (_)=> OnUse?.Invoke();
+            InputActions.General.Throw.performed += (_)=> OnThrow?.Invoke();
         }
 
         public static Vector2 Move => InputActions.Gravity.Move.ReadValue<Vector2>();

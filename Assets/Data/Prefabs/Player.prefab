@@ -1490,7 +1490,6 @@ GameObject:
   - component: {fileID: 434192267638924420}
   - component: {fileID: 5426664753534622912}
   - component: {fileID: 5859976316917938461}
-  - component: {fileID: 8945280242279152709}
   - component: {fileID: 8985719956768327224}
   - component: {fileID: 3985184839724276830}
   - component: {fileID: 95002627717350384}
@@ -1612,19 +1611,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AccelerationMultiplier: 2
---- !u!114 &8945280242279152709
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1915102008071246}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a914260938772e4d94d4f0599473841, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <Weight>k__BackingField: 0.02
 --- !u!54 &8985719956768327224
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1720,7 +1706,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1915102008071246}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b2d8418b0b9634b1892b0268dd9c2743, type: 3}
   m_Name: 
@@ -2220,7 +2206,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee474fe7b1ff627429a87a59887e5d17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Item: {fileID: 0}
+  _Item:
+    <Type>k__BackingField: {fileID: 0}
+    <Object>k__BackingField: {fileID: 0}
 --- !u!1 &7083451140157127361
 GameObject:
   m_ObjectHideFlags: 0

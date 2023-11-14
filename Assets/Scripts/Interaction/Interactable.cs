@@ -12,7 +12,7 @@ namespace Ametrin.KunstBLL.Interaction{
     }
 
     public interface IInteractor{
-        void PickUp(Item item);
+        void PickUp(ItemStack item);
     }
 
     public interface IInteractable{

@@ -25,9 +25,14 @@ namespace Ametrin.KunstBLL.Entity.Controller{
         }
 
         protected void UseMainHandItem(){
-            if(ItemCooldown > 0 || MainHand.Item == null) return;
-            ItemCooldown = MainHand.Item.UsageCooldown;
+            if(ItemCooldown > 0 || MainHand.Item.IsEmpty) return;
+            ItemCooldown = MainHand.Item.Type.UsageCooldown;
             MainHand.Interact(Manager, LookDirection);
+        }
+
+        protected void ThrowMainHandItem(){
+            if(MainHand.Item.IsEmpty) return;
+            MainHand.DismountItem();
         }
 
         protected virtual void OnGravityChange(){

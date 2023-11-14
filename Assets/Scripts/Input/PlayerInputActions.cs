@@ -264,7 +264,7 @@ namespace Ametrin.KunstBLL.Input
                     ""path"": ""<Keyboard>/ctrl"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""KeyboardMouse"",
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -275,7 +275,7 @@ namespace Ametrin.KunstBLL.Input
                     ""path"": ""<Keyboard>/shift"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""KeyboardMouse"",
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -286,7 +286,7 @@ namespace Ametrin.KunstBLL.Input
                     ""path"": ""<Keyboard>/a"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""KeyboardMouse"",
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -297,7 +297,7 @@ namespace Ametrin.KunstBLL.Input
                     ""path"": ""<Keyboard>/d"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""KeyboardMouse"",
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -308,7 +308,7 @@ namespace Ametrin.KunstBLL.Input
                     ""path"": ""<Keyboard>/w"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""KeyboardMouse"",
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -319,7 +319,7 @@ namespace Ametrin.KunstBLL.Input
                     ""path"": ""<Keyboard>/s"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""KeyboardMouse"",
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -330,7 +330,7 @@ namespace Ametrin.KunstBLL.Input
                     ""path"": ""<Keyboard>/r"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""KeyboardMouse"",
                     ""action"": ""Roll"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -341,7 +341,7 @@ namespace Ametrin.KunstBLL.Input
                     ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""KeyboardMouse"",
                     ""action"": ""Stop"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -378,6 +378,15 @@ namespace Ametrin.KunstBLL.Input
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Throw"",
+                    ""type"": ""Button"",
+                    ""id"": ""d719fea0-8eed-4bc9-af81-5f820c59f238"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -422,6 +431,17 @@ namespace Ametrin.KunstBLL.Input
                     ""processors"": ""InvertVector2(invertX=false),StickDeadzone,ScaleVector2(x=300,y=300)"",
                     ""groups"": ""Gamepad"",
                     ""action"": ""Look"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fdcd695e-852b-45d3-9e65-8249ca0a95e1"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyboardMouse"",
+                    ""action"": ""Throw"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -493,6 +513,7 @@ namespace Ametrin.KunstBLL.Input
             m_General_Use = m_General.FindAction("Use", throwIfNotFound: true);
             m_General_Interact = m_General.FindAction("Interact", throwIfNotFound: true);
             m_General_Look = m_General.FindAction("Look", throwIfNotFound: true);
+            m_General_Throw = m_General.FindAction("Throw", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -681,6 +702,7 @@ namespace Ametrin.KunstBLL.Input
         private readonly InputAction m_General_Use;
         private readonly InputAction m_General_Interact;
         private readonly InputAction m_General_Look;
+        private readonly InputAction m_General_Throw;
         public struct GeneralActions
         {
             private @PlayerInputActions m_Wrapper;
@@ -688,6 +710,7 @@ namespace Ametrin.KunstBLL.Input
             public InputAction @Use => m_Wrapper.m_General_Use;
             public InputAction @Interact => m_Wrapper.m_General_Interact;
             public InputAction @Look => m_Wrapper.m_General_Look;
+            public InputAction @Throw => m_Wrapper.m_General_Throw;
             public InputActionMap Get() { return m_Wrapper.m_General; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -706,6 +729,9 @@ namespace Ametrin.KunstBLL.Input
                 @Look.started += instance.OnLook;
                 @Look.performed += instance.OnLook;
                 @Look.canceled += instance.OnLook;
+                @Throw.started += instance.OnThrow;
+                @Throw.performed += instance.OnThrow;
+                @Throw.canceled += instance.OnThrow;
             }
 
             private void UnregisterCallbacks(IGeneralActions instance)
@@ -719,6 +745,9 @@ namespace Ametrin.KunstBLL.Input
                 @Look.started -= instance.OnLook;
                 @Look.performed -= instance.OnLook;
                 @Look.canceled -= instance.OnLook;
+                @Throw.started -= instance.OnThrow;
+                @Throw.performed -= instance.OnThrow;
+                @Throw.canceled -= instance.OnThrow;
             }
 
             public void RemoveCallbacks(IGeneralActions instance)
@@ -789,6 +818,7 @@ namespace Ametrin.KunstBLL.Input
             void OnUse(InputAction.CallbackContext context);
             void OnInteract(InputAction.CallbackContext context);
             void OnLook(InputAction.CallbackContext context);
+            void OnThrow(InputAction.CallbackContext context);
         }
     }
 }

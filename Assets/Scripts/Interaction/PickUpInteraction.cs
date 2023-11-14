@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Ametrin.KunstBLL.Interaction{
     public sealed class PickUpInteraction : MonoBehaviour, IInteractable{
-        [SerializeField] private Item Item;
+        [SerializeField] private ItemStack Item;
         
         public void Interact(IInteractor interactor){
             interactor.PickUp(Item);

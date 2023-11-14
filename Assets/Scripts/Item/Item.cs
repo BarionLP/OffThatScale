@@ -17,16 +17,18 @@ namespace Ametrin.KunstBLL.Items{
     }
 
     public record ItemUseContext{
-        public IItemUser User {get;}
-        public Vector3 ItemPositon {get;}
+        public IItemUser User { get; }
+        public Vector3 ItemPositon { get;}
         public Vector3 LookDirection { get; }
         public ItemHolder Holder { get; }
+        public ItemStack Stack { get; }
 
-        public ItemUseContext(IItemUser user, ItemHolder holder, Vector3 itemPositon, Vector3 lookingDirection){
+        public ItemUseContext(IItemUser user, ItemHolder holder, Vector3 itemPositon, Vector3 lookingDirection, ItemStack stack){
             User = user;
             ItemPositon = itemPositon;
             LookDirection = lookingDirection;
             Holder = holder;
+            Stack = stack;
         }
     }
 }

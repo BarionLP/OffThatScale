@@ -9,9 +9,8 @@ namespace Ametrin.KunstBLL.Entity{
         public MovementController MovementController { get; protected set; }
         public HealthManager Health { get; protected set; }
 
-        public void PickUp(Item item) {
+        public void PickUp(ItemStack item) {
             Controller.MainHand.Item = item;
-            print("picked");
         }
 
         protected virtual void Awake(){
