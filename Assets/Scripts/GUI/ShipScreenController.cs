@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-namespace Ametrin.KunstBLL{
+namespace Ametrin.KunstBLL.GUI{
     public sealed class ShipScreenController : MonoBehaviour{      
         [SerializeField] private TextMeshProUGUI Text;
 

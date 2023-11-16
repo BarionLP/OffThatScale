@@ -43,7 +43,7 @@ namespace Ametrin.KunstBLL.EditorTools{
             EditorGUI.PropertyField(propRect, property, label, true);
 
             var buttonRect = new Rect(position.x + position.width - BUTTON_WIDTH, position.y, BUTTON_WIDTH, EditorGUIUtility.singleLineHeight);
-            if(GUI.Button(buttonRect, "Set")){
+            if(UnityEngine.GUI.Button(buttonRect, "Set")){
                 var methodName = (attribute as SetableAttribute).MethodName;
                 foreach(var obj in property.serializedObject.targetObjects){
                     obj.GetType().GetMethod(methodName, BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance).Invoke(obj, Array.Empty<object>());

@@ -1,0 +1,10 @@
+Button {
+    padding-left: 2%;
+    padding-right: 2%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    font-size: 20px;
+    -unity-text-align: middle-center;
+    white-space: nowrap;
+    -unity-font-style: bold;
+}

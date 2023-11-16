@@ -1,0 +1,10 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Data/GUI/DefaultStyle.uss?fileID=7433441132597879392&amp;guid=a3e1499f5d79bbb498969c72d9085c13&amp;type=3#DefaultStyle" />
+    <ui:VisualElement name="Root" style="flex-grow: 1; position: absolute; left: 0; bottom: 0; right: 50%; top: 0; justify-content: center; align-items: flex-start;">
+        <ui:VisualElement name="Buttons" style="align-self: center; width: 50%; justify-content: center;">
+            <ui:Button text="Start" display-tooltip-when-elided="true" name="StartButton" />
+            <ui:Button text="Settings" display-tooltip-when-elided="true" name="SettingsButton" />
+            <ui:Button text="Quit" display-tooltip-when-elided="true" name="QuitButton" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
