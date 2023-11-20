@@ -20,6 +20,7 @@ namespace Ametrin.KunstBLL.Entity.Controller{
 
         public void Start(){
             Camera = UnityEngine.Camera.main.transform;
+            print(Camera);
             PlayerInput.OnInteract += Interact;
             PlayerInput.OnUse += UseMainHandItem;
             PlayerInput.OnThrow += ThrowMainHandItem;

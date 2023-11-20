@@ -3,8 +3,22 @@ Button {
     padding-right: 2%;
     padding-top: 2%;
     padding-bottom: 2%;
-    font-size: 20px;
+    font-size: 22px;
     -unity-text-align: middle-center;
     white-space: nowrap;
     -unity-font-style: bold;
+    background-color: rgba(0, 0, 0, 0.48);
+    color: rgb(87, 25, 226);
+    border-left-color: rgb(87, 25, 226);
+    border-right-color: rgb(87, 25, 226);
+    border-top-color: rgb(87, 25, 226);
+    border-bottom-color: rgb(87, 25, 226);
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+
+Button:hover {
+    scale: 1.05 1.05;
 }

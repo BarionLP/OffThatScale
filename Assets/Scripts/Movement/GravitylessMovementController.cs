@@ -35,7 +35,7 @@ namespace Ametrin.KunstBLL.Movement{
             enabled = GameManager.IsZeroG;
         }
 
-        ~GravitylessMovementController(){
+        private void OnDestroy(){
             GameManager.OnGravityChange -= UpdateState;
         }
 

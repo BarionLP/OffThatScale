@@ -1,0 +1,10 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Data/GUI/DefaultStyle.uss?fileID=7433441132597879392&amp;guid=a3e1499f5d79bbb498969c72d9085c13&amp;type=3#DefaultStyle" />
+    <ui:VisualElement name="Root" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0.34);">
+        <ui:VisualElement name="Buttons" style="flex-grow: 1; width: 25%; align-items: stretch; align-self: center; justify-content: center;">
+            <ui:Button text="Continue" display-tooltip-when-elided="true" name="ContinueButton" />
+            <ui:Button text="Settings" display-tooltip-when-elided="true" name="SettingsButton" />
+            <ui:Button text="Main Menu" display-tooltip-when-elided="true" name="ExitButton" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

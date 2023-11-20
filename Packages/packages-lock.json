@@ -48,7 +48,7 @@
       "dependencies": {
         "com.unity.shadergraph": "7.1.8"
       },
-      "hash": "1f212c268860dc1dc260bbd60d03246908508b79"
+      "hash": "efb04336edb479dcdde43957b494395f3386cb02"
     },
     "com.unity.animation.rigging": {
       "version": "1.2.1",

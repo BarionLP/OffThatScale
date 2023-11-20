@@ -1,10 +1,11 @@
 using Ametrin.Utils.Unity;
 using UnityEngine;
 using UnityEngine.VFX;
-using Ametrin.KunstBLL;
 
 namespace Ametrin.KunstBLL.Items{
     public sealed class ItemHolder : MonoBehaviour{
+        private const int HOLDING_LAYER = 8;
+        private const int DEFAULT_LAYER = 6;
         [SerializeField, InlineEditor] private ItemStack _Item = ItemStack.Empty();
         public VisualEffect Effect {get; private set;}
         public ItemStack Item {
@@ -17,7 +18,7 @@ namespace Ametrin.KunstBLL.Items{
                 if (_Item.IsEmpty) return;
                 _Item.Object.transform.SetParent(transform);
                 _Item.Object.transform.localPosition = Vector3.zero;
-                _Item.Object.TryGetComponent<Collider>().Resolve(collider => collider.enabled = false);
+                _Item.Object.layer = HOLDING_LAYER;
                 _Item.Object.TryGetComponent<Rigidbody>().Resolve(collider => collider.isKinematic = true);
                 _Item.Object.TryGetComponent<VisualEffect>().Resolve(effect => Effect = effect, error => Effect = null);
             }
@@ -33,9 +34,9 @@ namespace Ametrin.KunstBLL.Items{
         public void DismountItem(){
             if (_Item.IsEmpty) return;
 
-            _Item.Object.TryGetComponent<Rigidbody>().Resolve(collider => collider.isKinematic = false);
-            _Item.Object.TryGetComponent<Collider>().Resolve(collider => collider.enabled = true);
             _Item.Object.transform.SetParent(GameManager.Instance.WorldRoot, true);
+            _Item.Object.layer = DEFAULT_LAYER;
+            _Item.Object.TryGetComponent<Rigidbody>().Resolve(collider => collider.isKinematic = false);
         }
     }
 }
