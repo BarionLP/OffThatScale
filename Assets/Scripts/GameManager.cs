@@ -3,6 +3,7 @@ using Ametrin.KunstBLL.Input;
 using Ametrin.Utils.Unity;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Playables;
 using PlayerInput = Ametrin.KunstBLL.Input.PlayerInput;
 
 namespace Ametrin.KunstBLL{
@@ -13,17 +14,28 @@ namespace Ametrin.KunstBLL{
         [SerializeField] private Vector3 InitalGravity;
         [SerializeField] private PauseMenuController PauseMenu;
         [SerializeField] private InputAction PauseAction;
+        [SerializeField] private PlayableDirector Director;
         [field: SerializeField] public Transform WorldRoot { get; private set; }
 
         protected override void Awake(){
+            base.Awake();
             Physics.gravity = InitalGravity;
             OnGravityChange?.Invoke();
             PauseAction.performed += PauseToggle;
+            PauseMenu.Hide();
+            Invoke(nameof(OnCutSceneFinish), (float)Director.duration);
         }
 
         private void Start(){
             PauseAction.Enable();
-            Continue();
+            PlayerInput.Disable();
+            Time.timeScale = 1;
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+
+        private void OnCutSceneFinish(){
+            PlayerInput.Enable();
+            Director.enabled = false;
         }
 
         public static void PauseToggle(InputAction.CallbackContext context = default){
