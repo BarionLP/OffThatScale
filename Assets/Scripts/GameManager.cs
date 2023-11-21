@@ -1,5 +1,4 @@
 using System;
-using Ametrin.KunstBLL.Input;
 using Ametrin.Utils.Unity;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -19,23 +18,24 @@ namespace Ametrin.KunstBLL{
 
         protected override void Awake(){
             base.Awake();
-            Physics.gravity = InitalGravity;
-            OnGravityChange?.Invoke();
-            PauseAction.performed += PauseToggle;
             PauseMenu.Hide();
+            PauseAction.performed += PauseToggle;
+            Physics.gravity = InitalGravity;
             Invoke(nameof(OnCutSceneFinish), (float)Director.duration);
+            // OnCutSceneFinish();
         }
 
         private void Start(){
-            PauseAction.Enable();
             PlayerInput.Disable();
             Time.timeScale = 1;
             Cursor.lockState = CursorLockMode.Locked;
+            PauseAction.Enable();
+            OnGravityChange?.Invoke();
         }
 
         private void OnCutSceneFinish(){
             PlayerInput.Enable();
-            Director.enabled = false;
+            // Director.enabled = false;
         }
 
         public static void PauseToggle(InputAction.CallbackContext context = default){
