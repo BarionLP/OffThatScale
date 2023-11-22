@@ -21,5 +21,6 @@ namespace Ametrin.KunstBLL{
         }
 
         public void Interact(IInteractor interactor) => Linked?.Interact(interactor);
+        public string GetDescription(IInteractor interactor) => Linked.GetDescription(interactor);
     }
 }

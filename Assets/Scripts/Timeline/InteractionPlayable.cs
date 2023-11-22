@@ -18,7 +18,7 @@ namespace Ametrin.KunstBLL.Timeline{
         }
 
         private sealed class DummyInteractor : IInteractor{
-            public void PickUp(ItemStack item) {}
+            public ItemHolder MainHand { get; }
         }
     }
 }

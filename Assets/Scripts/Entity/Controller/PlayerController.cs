@@ -1,3 +1,5 @@
+using System;
+using Ametrin.Utils.Unity;
 using Ametrin.KunstBLL.Input;
 using Ametrin.KunstBLL.Interaction;
 using UnityEngine;
@@ -14,9 +16,11 @@ namespace Ametrin.KunstBLL.Entity.Controller{
         [SerializeField] private float MouseSensitivity = 4;
         #pragma warning restore IDE0044
 
+        public event Action<string> UpdateInteractionHint;
         public override Vector3 LookDirection => Camera.transform.forward;
         private float pitch = 0;
         public Transform Camera {get; private set;}
+        private IInteractable SelectedInteractable;
 
         public void Start(){
             Camera = UnityEngine.Camera.main.transform;
@@ -45,11 +49,30 @@ namespace Ametrin.KunstBLL.Entity.Controller{
             Camera.localRotation = transform.rotation * Quaternion.Euler(pitch, 0, 0);
         }
 
-        private void Interact(){
-            if (!Physics.Raycast(Camera.position, LookDirection, out var hit, InteractionDistance, InteractionLayers)) return;
-            if (!hit.collider.TryGetComponent<IInteractable>(out var interactable)) return;
+        private void FixedUpdate(){
+            CheckInteraction();
 
-            interactable.Interact(Manager);
+            void CheckInteraction(){
+                PhysicsExtensions.Raycast(Camera.position, LookDirection, InteractionDistance, InteractionLayers)
+                                .Map(hit => hit.collider.TryGetComponent<IInteractable>())
+                                .Resolve(interactable => {
+                                    if(SelectedInteractable == interactable) return;
+                                    SelectedInteractable = interactable;
+                                    UpdateInteractionHint?.Invoke(GetDescription());
+                                }, () =>{ //sniff sniff
+                                    if(SelectedInteractable is null) return;
+                                    SelectedInteractable = null;
+                                    UpdateInteractionHint?.Invoke(GetDescription());
+                                });
+
+                string GetDescription(){
+                    return SelectedInteractable is null ? string.Empty : $"E - {SelectedInteractable.GetDescription(Manager)}";
+                }
+            }
+        }
+
+        private void Interact(){
+            SelectedInteractable?.Interact(Manager);
         }
 
         public override bool IsMoving => PlayerInput.Move != Vector2.zero;

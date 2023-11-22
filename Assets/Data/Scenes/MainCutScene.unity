@@ -1541,6 +1541,68 @@ PlayableDirector:
     value: {fileID: 676499261}
   m_ExposedReferences:
     m_References: []
+--- !u!1 &451685011
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 451685013}
+  - component: {fileID: 451685012}
+  - component: {fileID: 451685014}
+  m_Layer: 5
+  m_Name: InGameGUI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &451685012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 451685011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PanelSettings: {fileID: 11400000, guid: 119d1f04e86056c40a39d263922b4c4e, type: 2}
+  m_ParentUI: {fileID: 0}
+  sourceAsset: {fileID: 9197481963319205126, guid: 8ee804c90706d3044be93a864f07afe8,
+    type: 3}
+  m_SortingOrder: 0
+--- !u!4 &451685013
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 451685011}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &451685014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 451685011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d28adc3729697c439cffa11916e6028, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &493423022
 GameObject:
   m_ObjectHideFlags: 0
@@ -2209,6 +2271,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ConsolePrefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 7720323731393316850, guid: 361e0ec70cbd0b04ea6a7a76ca5ed96d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8660764277790352659, guid: 361e0ec70cbd0b04ea6a7a76ca5ed96d,
         type: 3}
@@ -4594,5 +4661,6 @@ SceneRoots:
   - {fileID: 435986100}
   - {fileID: 1914560502}
   - {fileID: 1304814817}
-  - {fileID: 2111813356}
   - {fileID: 131380125}
+  - {fileID: 451685013}
+  - {fileID: 2111813356}

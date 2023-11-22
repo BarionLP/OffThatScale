@@ -6,7 +6,9 @@ namespace Ametrin.KunstBLL.Interaction{
         [SerializeField] private ItemStack Item;
         
         public void Interact(IInteractor interactor){
-            interactor.PickUp(Item);
+            interactor.MainHand.Item = Item;
         }
+
+        public string GetDescription(IInteractor interactor) => "Pick up";
     }
 }

@@ -20,7 +20,7 @@ namespace Ametrin.KunstBLL.Items{
                 _Item.Object.transform.localPosition = Vector3.zero;
                 _Item.Object.layer = HOLDING_LAYER;
                 _Item.Object.TryGetComponent<Rigidbody>().Resolve(collider => collider.isKinematic = true);
-                _Item.Object.TryGetComponent<VisualEffect>().Resolve(effect => Effect = effect, error => Effect = null);
+                _Item.Object.TryGetComponent<VisualEffect>().Resolve(effect => Effect = effect, ()=> Effect = null);
             }
         }
         private void Awake(){

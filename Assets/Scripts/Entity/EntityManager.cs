@@ -8,10 +8,7 @@ namespace Ametrin.KunstBLL.Entity{
         public EntityController Controller { get; protected set; }
         public MovementController MovementController { get; protected set; }
         public HealthManager Health { get; protected set; }
-
-        public void PickUp(ItemStack item) {
-            Controller.MainHand.Item = item;
-        }
+        public ItemHolder MainHand => Controller.MainHand;
 
         protected virtual void Awake(){
             Controller = GetComponent<EntityController>();

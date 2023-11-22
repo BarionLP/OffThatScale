@@ -50,5 +50,7 @@ namespace Ametrin.KunstBLL.Interaction{
         public void SetOpenState(){
             OpenState = target.localRotation;
         }
+
+        public string GetDescription(IInteractor interactor) => IsOpen ? "Close" : "Open";
     }
 }

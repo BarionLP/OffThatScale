@@ -5,9 +5,9 @@
       "depth": 0,
       "source": "git",
       "dependencies": {
-        "com.ametrin.utils": "0.2.0"
+        "com.ametrin.utils": "0.2.1"
       },
-      "hash": "a0d58323250feac1e5c6e7961453a8161f2832b9"
+      "hash": "6ac893374b39cec733a9fb00e2dd3a7a694302cf"
     },
     "com.ametrin.console-command-integration": {
       "version": "https://github.com/BarionLP/UnityConsoleCommandIntegration.git#master",
@@ -32,7 +32,7 @@
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "2b1e38fa0ad943fdc9c42ad49c9cd97d47ff5d43"
+      "hash": "f2e583328df02d4668f20ab821b6b5dcae200e30"
     },
     "com.coffee.upm-git-extension": {
       "version": "https://github.com/mob-sakai/UpmGitExtension.git#main",
