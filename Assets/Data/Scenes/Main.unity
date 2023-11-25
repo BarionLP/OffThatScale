@@ -3655,11 +3655,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpaceShip
       objectReference: {fileID: 0}
-    - target: {fileID: 6759938511090580744, guid: 91eeb7e3366e73a4f80e9159082b3a01,
-        type: 3}
-      propertyPath: m_Convex
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6762463911291833857, guid: 91eeb7e3366e73a4f80e9159082b3a01,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3708,11 +3703,6 @@ PrefabInstance:
     - target: {fileID: 6762463911291833857, guid: 91eeb7e3366e73a4f80e9159082b3a01,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7045903829435143796, guid: 91eeb7e3366e73a4f80e9159082b3a01,
-        type: 3}
-      propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

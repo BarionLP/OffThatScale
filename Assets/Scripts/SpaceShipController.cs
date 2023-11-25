@@ -3,8 +3,9 @@ using UnityEngine;
 
 namespace Ametrin.KunstBLL{
     public sealed class SpaceShipController : MonoBehaviour{
-        [SerializeField] private float MaxShipWeight;
-        [SerializeField] private float CurrentShipWeight;
+        [field: SerializeField] public float MaxShipWeight {get; private set; } = 1.3f;
+        [field: SerializeField] public float CurrentShipWeight { get; private set; } = 1f;
+        public bool IsOverweight => CurrentShipWeight > MaxShipWeight;
 
         private ShipScreenController ScreenController;
 

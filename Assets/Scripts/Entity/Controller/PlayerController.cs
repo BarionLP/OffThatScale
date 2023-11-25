@@ -72,7 +72,11 @@ namespace Ametrin.KunstBLL.Entity.Controller{
                 UpdateInteractionHint?.Invoke(GetDescription());
 
                 string GetDescription(){
-                    return SelectedInteractable is null ? string.Empty : $"E - {SelectedInteractable.GetDescription(Manager)}";
+                    if(SelectedInteractable is null) return string.Empty;
+
+                    var canInteract = SelectedInteractable.CanInteract(Manager);
+                    var hint = SelectedInteractable.GetDescription(Manager, canInteract);
+                    return canInteract ? $"E - {hint}" : hint;
                 }
             }
         }

@@ -7,15 +7,18 @@ namespace Ametrin.KunstBLL.Interaction{
         [SerializeField] private UnityEvent OnRipped = new();
         [SerializeField] private Item CorrectItem;
         public void Interact(IInteractor interactor){
-            if(interactor.MainHand.Item.Type != CorrectItem) return; //sniff sniff
+            if(!CanInteract(interactor)) return; //sniff sniff
             GetComponent<Rigidbody>().isKinematic = false;
             transform.SetParent(GameManager.Instance.WorldRoot);
             OnRipped.Invoke();
             Destroy(this);
         }
 
-        public string GetDescription(IInteractor interactor){
-            return interactor.MainHand.Item.Type == CorrectItem ? "Rip out" : $"requires {CorrectItem.DisplayName}";
+        public bool CanInteract(IInteractor interactor) => interactor.MainHand.Item.Type == CorrectItem;
+
+        public string GetDescription(IInteractor interactor, bool canInteract){
+            return canInteract ? "Rip out" : $"requires {CorrectItem.DisplayName}";
         }
+
     }
 }
