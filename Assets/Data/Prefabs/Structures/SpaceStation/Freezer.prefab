@@ -16,7 +16,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7680561003153112258
 Transform:
@@ -41,17 +41,16 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1576910482956278666}
   m_Enabled: 1
-  serializedVersion: 10
+  serializedVersion: 11
   m_Type: 2
-  m_Shape: 0
   m_Color: {r: 0.9541713, g: 0.7877358, b: 1, a: 1}
   m_Intensity: 0.6
-  m_Range: 10
+  m_Range: 5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 1
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -134,7 +133,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &275674979235328479
 Transform:
@@ -145,7 +144,7 @@ Transform:
   m_GameObject: {fileID: 5124582247490775137}
   serializedVersion: 2
   m_LocalRotation: {x: -0.8211741, y: 0, z: 0, w: 0.5706779}
-  m_LocalPosition: {x: -0.006, y: 2.585, z: -0.626}
+  m_LocalPosition: {x: -0.006, y: 2.3577, z: -0.5026}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -159,12 +158,11 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5124582247490775137}
   m_Enabled: 1
-  serializedVersion: 10
+  serializedVersion: 11
   m_Type: 2
-  m_Shape: 0
   m_Color: {r: 0.9541713, g: 0.7877358, b: 1, a: 1}
   m_Intensity: 0.6
-  m_Range: 10
+  m_Range: 5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -314,6 +312,16 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -8068073526183931155, guid: f46eef4bf1df6854b9b32a601a7e097a,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -3133498875991405556, guid: f46eef4bf1df6854b9b32a601a7e097a,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: -2897790465270204807, guid: f46eef4bf1df6854b9b32a601a7e097a,
         type: 3}
       propertyPath: m_LocalScale.y
@@ -372,7 +380,7 @@ PrefabInstance:
     - target: {fileID: -1950733119399844177, guid: f46eef4bf1df6854b9b32a601a7e097a,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 130
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -1950733119399844177, guid: f46eef4bf1df6854b9b32a601a7e097a,
         type: 3}
@@ -399,10 +407,20 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f46eef4bf1df6854b9b32a601a7e097a,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 990761963331379121, guid: f46eef4bf1df6854b9b32a601a7e097a,
         type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 990761963331379121, guid: f46eef4bf1df6854b9b32a601a7e097a,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 5144549477940431826, guid: f46eef4bf1df6854b9b32a601a7e097a,
         type: 3}
@@ -498,7 +516,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 5094664669064056421}
   IsOpen: 0
-  Duration: 1
+  Duration: 2
   ClosedState: {x: -0.8211741, y: 0, z: 0, w: 0.5706779}
   OpenState: {x: -0.34704316, y: 0.74423647, z: 0.5172098, w: 0.24117887}
   OnOpened:
@@ -507,6 +525,18 @@ MonoBehaviour:
       - m_Target: {fileID: 2776324301512755628}
         m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
         m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5742129955651178268}
+        m_TargetAssemblyTypeName: Ametrin.KunstBLL.LightControll, Assembly-CSharp
+        m_MethodName: RunOut
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -565,6 +595,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 5397321141616087029, guid: bbe829eda50a8a84ebe03b7a16a34ac4,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 61a6d3136b6c4494586f6278d79a1d2f, type: 3}
+  m_Resource: {fileID: 8300000, guid: 61a6d3136b6c4494586f6278d79a1d2f, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.4
   m_Pitch: 1

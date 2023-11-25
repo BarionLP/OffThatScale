@@ -12,7 +12,9 @@ namespace Ametrin.KunstBLL.Entity{
                 Debug.LogError("Two Players...");
                 DestroyImmediate(Instance.gameObject);
             }
-            Instance = this;            
+            Instance = this;
+            WorldManager.OnPlayerLeftWorld += OnLeftWorld;
+            WorldManager.OnPlayerLeftWorld += OnLeftWorld;
         }
 
         private void Start(){
@@ -22,6 +24,19 @@ namespace Ametrin.KunstBLL.Entity{
 
             ConsoleManager.OnHide += PlayerInput.Enable;
             ConsoleManager.OnShow += PlayerInput.Disable;
+        }
+
+        private void OnLeftWorld(){
+            PlayerInput.Disable();
+            Invoke(nameof(OnDeath), 3);
+        }
+
+        public void OnDeath(){
+            SceneManager.LoadScene(Scene.Start);
+        }
+
+        private void OnDestroy(){
+            WorldManager.OnPlayerLeftWorld -= OnLeftWorld;
         }
     }
 }

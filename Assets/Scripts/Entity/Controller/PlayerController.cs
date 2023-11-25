@@ -9,7 +9,8 @@ namespace Ametrin.KunstBLL.Entity.Controller{
     [RequireComponent(typeof(PlayerManager))]
     public sealed class PlayerController : EntityController{
         #pragma warning disable IDE0044
-        [SerializeField] private float InteractionDistance = 1;
+        [SerializeField] private float InteractionRadius = 0.5f;
+        [SerializeField] private float InteractionOffset = 0.5f;
         [SerializeField] private LayerMask InteractionLayers;
         [SerializeField] private Transform CameraRoot;
         [SerializeField] private Vector2 CameraClamp;
@@ -19,8 +20,15 @@ namespace Ametrin.KunstBLL.Entity.Controller{
         public event Action<string> UpdateInteractionHint;
         public override Vector3 LookDirection => Camera.transform.forward;
         private float pitch = 0;
-        public Transform Camera {get; private set;}
+        [field: SerializeField] public Transform Camera {get; private set;}
         private IInteractable SelectedInteractable;
+
+        protected override void Awake(){
+            base.Awake();
+            GameManager.OnCutSceneFinished += ()=>{
+                UpdateInteractionHint.Invoke("WASD - Accelerate");
+            };
+        }
 
         public void Start(){
             Camera = UnityEngine.Camera.main.transform;
@@ -53,17 +61,15 @@ namespace Ametrin.KunstBLL.Entity.Controller{
             CheckInteraction();
 
             void CheckInteraction(){
-                PhysicsExtensions.Raycast(Camera.position, LookDirection, InteractionDistance, InteractionLayers)
-                                .Map(hit => hit.collider.TryGetComponent<IInteractable>())
-                                .Resolve(interactable => {
-                                    if(SelectedInteractable == interactable) return;
-                                    SelectedInteractable = interactable;
-                                    UpdateInteractionHint?.Invoke(GetDescription());
-                                }, () =>{ //sniff sniff
-                                    if(SelectedInteractable is null) return;
-                                    SelectedInteractable = null;
-                                    UpdateInteractionHint?.Invoke(GetDescription());
-                                });
+                var colliders = Physics.OverlapSphere(Camera.position + Camera.forward * InteractionOffset, InteractionRadius, InteractionLayers);
+                if (colliders.Length > 0 && colliders[0].TryGetComponent<IInteractable>(out var interactable)){
+                    if (SelectedInteractable == interactable) return;
+                    SelectedInteractable = interactable;
+                }else{
+                    if (SelectedInteractable is null) return;
+                    SelectedInteractable = null;
+                }
+                UpdateInteractionHint?.Invoke(GetDescription());
 
                 string GetDescription(){
                     return SelectedInteractable is null ? string.Empty : $"E - {SelectedInteractable.GetDescription(Manager)}";
@@ -83,5 +89,10 @@ namespace Ametrin.KunstBLL.Entity.Controller{
         public override bool ShouldRoll => PlayerInput.ShouldRoll;
         public override bool ShouldSlowDown => PlayerInput.ShouldSlowDown;
         public override Quaternion CameraRotation => Camera.rotation;
+
+        private void OnDrawGizmosSelected(){
+            Gizmos.color = Color.blue;
+            Gizmos.DrawWireSphere(Camera.position + Camera.forward * InteractionOffset, InteractionRadius);
+        }
     }
 }

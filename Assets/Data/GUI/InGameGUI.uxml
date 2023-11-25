@@ -2,5 +2,8 @@
     <Style src="project://database/Assets/Data/GUI/DefaultStyle.uss?fileID=7433441132597879392&amp;guid=a3e1499f5d79bbb498969c72d9085c13&amp;type=3#DefaultStyle" />
     <ui:VisualElement name="Root" style="flex-grow: 1;">
         <ui:Label name="InteractionHint" style="position: absolute; right: 10%; bottom: 10%; -unity-text-align: upper-right;" />
+        <ui:VisualElement name="OffWorld" style="flex-grow: 1; background-color: rgb(0, 0, 0); opacity: 0;">
+            <ui:Label text="You&apos;ve wandered to far&lt;br&gt;There is no way back" style="position: absolute; right: 0; bottom: 0; left: 0; top: 0; font-size: 28px; -unity-text-align: middle-center;" />
+        </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

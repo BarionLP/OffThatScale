@@ -24,7 +24,6 @@ namespace Ametrin.KunstBLL{
 
         public void Show(){
             RootElement.style.display = DisplayStyle.Flex;
-            // RootElement.SetEnabled(true);
         }
 
         public void Hide(){

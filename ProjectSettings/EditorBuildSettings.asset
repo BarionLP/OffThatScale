@@ -12,10 +12,7 @@ EditorBuildSettings:
     path: Assets/Data/Scenes/Transition.unity
     guid: 59af987762e5f4145a8295f9fbb68741
   - enabled: 1
-    path: Assets/Data/Scenes/MainCutScene.unity
-    guid: 9b039b30b6d8e084da47754070be1a01
-  - enabled: 0
     path: Assets/Data/Scenes/Main.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    guid: 9b039b30b6d8e084da47754070be1a01
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

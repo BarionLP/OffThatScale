@@ -1,5 +1,6 @@
 using System;
 using System.Threading;
+using UnityEngine;
 
 namespace Ametrin.KunstBLL{
     public static class SceneManager{
@@ -8,6 +9,12 @@ namespace Ametrin.KunstBLL{
             UnityEngine.SceneManagement.SceneManager.LoadScene((int) scene);
             // UnityEngine.SceneManagement.SceneManager.LoadScene(TRANSITION_SCENE);
             // Thread.Sleep(TimeSpan.FromSeconds(1));
+            _ = scene switch{
+                Scene.Start => Cursor.lockState = CursorLockMode.None,
+                Scene.Game => Cursor.lockState = CursorLockMode.Locked,
+                _ => Cursor.lockState = CursorLockMode.None,
+                // _ => throw new ArgumentException("Tried loading unknown scene", nameof(scene)),
+            };
         }
     }
 

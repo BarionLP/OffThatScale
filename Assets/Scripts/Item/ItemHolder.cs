@@ -1,3 +1,4 @@
+using System;
 using Ametrin.Utils.Unity;
 using UnityEngine;
 using UnityEngine.VFX;
@@ -6,6 +7,7 @@ namespace Ametrin.KunstBLL.Items{
     public sealed class ItemHolder : MonoBehaviour{
         private const int HOLDING_LAYER = 8;
         private const int DEFAULT_LAYER = 6;
+        public event Action OnItemChanged;
         [SerializeField, InlineEditor] private ItemStack _Item = ItemStack.Empty();
         public VisualEffect Effect {get; private set;}
         public ItemStack Item {
@@ -14,15 +16,18 @@ namespace Ametrin.KunstBLL.Items{
                 DismountItem();
 
                 _Item = value;
+                OnItemChanged?.Invoke();
                 
                 if (_Item.IsEmpty) return;
                 _Item.Object.transform.SetParent(transform);
                 _Item.Object.transform.localPosition = Vector3.zero;
+                _Item.Object.transform.localRotation = Quaternion.identity;
                 _Item.Object.layer = HOLDING_LAYER;
                 _Item.Object.TryGetComponent<Rigidbody>().Resolve(collider => collider.isKinematic = true);
                 _Item.Object.TryGetComponent<VisualEffect>().Resolve(effect => Effect = effect, ()=> Effect = null);
             }
         }
+
         private void Awake(){
             Item = _Item; //Trigger an update;
         }

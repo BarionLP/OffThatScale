@@ -1,6 +1,9 @@
 using System;
+using Ametrin.KunstBLL.Entity;
+using Ametrin.KunstBLL.Entity.Controller;
 using Ametrin.Utils.Unity;
 using UnityEngine;
+using UnityEngine.Diagnostics;
 using UnityEngine.InputSystem;
 using UnityEngine.Playables;
 using PlayerInput = Ametrin.KunstBLL.Input.PlayerInput;
@@ -8,6 +11,7 @@ using PlayerInput = Ametrin.KunstBLL.Input.PlayerInput;
 namespace Ametrin.KunstBLL{
     public sealed class GameManager : MonoBehaviourSingleton<GameManager>{
         public static event Action OnGravityChange;
+        public static event Action OnCutSceneFinished;
         public static bool IsZeroG => Physics.gravity == Vector3.zero;
 
         [SerializeField] private Vector3 InitalGravity;
@@ -34,7 +38,9 @@ namespace Ametrin.KunstBLL{
         }
 
         private void OnCutSceneFinish(){
+            OnCutSceneFinished.Invoke();
             PlayerInput.Enable();
+            
             // Director.enabled = false;
         }
 

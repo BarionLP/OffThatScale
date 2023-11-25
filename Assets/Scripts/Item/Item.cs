@@ -4,13 +4,17 @@ namespace Ametrin.KunstBLL.Items{
     [CreateAssetMenu(menuName = "Item/Simple")]
     public class Item : ScriptableObject{
         [field: SerializeField] public GameObject MeshPrefab {get; private set;}
+        [field: SerializeField] public Holding Holding {get; private set;}
         [field: SerializeField] public string DisplayName {get; private set;}
         [field: SerializeField] public float UsageCooldown {get; private set;}
         
         public virtual void OnUse(ItemUseContext context) {
             Debug.Log($"Used {name}");
         }
+
     }
+
+    public enum Holding {Push, InHand, Front}
 
     public interface IItemUser{
         public Vector3 Position {get;}

@@ -29,4 +29,5 @@ Label {
     color: rgb(255, 255, 255);
     -unity-font-style: bold;
     white-space: nowrap;
+    -unity-text-align: middle-left;
 }
