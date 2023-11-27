@@ -13,7 +13,7 @@ namespace Ametrin.KunstBLL.Interaction{
         public void Interact(IInteractor interactor) {
             if(shipController.IsOverweight) return;
 
-            
+            shipController.StartEngine();
         }
     }
 }

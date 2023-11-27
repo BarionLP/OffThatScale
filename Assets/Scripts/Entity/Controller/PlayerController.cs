@@ -53,6 +53,7 @@ namespace Ametrin.KunstBLL.Entity.Controller{
         }
 
         private void LateUpdate(){
+            if(GameManager.EndPlaying) return;
             Camera.position = CameraRoot.position;
             Camera.localRotation = transform.rotation * Quaternion.Euler(pitch, 0, 0);
         }
@@ -95,6 +96,8 @@ namespace Ametrin.KunstBLL.Entity.Controller{
         public override Quaternion CameraRotation => Camera.rotation;
 
         private void OnDrawGizmosSelected(){
+            if(Camera == null) return;
+            
             Gizmos.color = Color.blue;
             Gizmos.DrawWireSphere(Camera.position + Camera.forward * InteractionOffset, InteractionRadius);
         }

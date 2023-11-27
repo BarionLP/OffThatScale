@@ -55,7 +55,7 @@ namespace Ametrin.KunstBLL.Entity.Controller{
             switch (MainHand.Item.Type.Holding){
                 case Holding.Push:
                 case Holding.Front:
-                    LeftHandRig.weight = 1;
+                    // LeftHandRig.weight = 1;
                     RightHandRig.weight = 1;
                     break;
 

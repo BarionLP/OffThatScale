@@ -8,13 +8,14 @@ namespace Ametrin.KunstBLL{
     public sealed class InGameGUIController : MonoBehaviour{
         [SerializeField] private float FadeMultiplier = 1.2f;
         private VisualElement RootElement;
-        private VisualElement OffWorldDisplay;
+        private VisualElement EndingDisplay;
 
         private void Awake(){
             RootElement = GetComponent<UIDocument>().rootVisualElement;
-            OffWorldDisplay = RootElement.Q<VisualElement>("OffWorld");
-            OffWorldDisplay.style.display = DisplayStyle.None;
-            WorldManager.OnPlayerLeftWorld += () => StartCoroutine(FadeOffWorldIn());
+            EndingDisplay = RootElement.Q<VisualElement>("Ending");
+            EndingDisplay.style.display = DisplayStyle.None;
+            WorldManager.OnPlayerLeftWorld += () => StartCoroutine(FadeEndIn("You've wandered to far<br>There is no way back"));
+            GameManager.OnGameCompleted += () => StartCoroutine(FadeEndIn("You managed to get on the Planet.<br>Will you figure out what happend?"));
         }
 
         private void Start(){
@@ -22,13 +23,14 @@ namespace Ametrin.KunstBLL{
             (PlayerManager.Instance.Controller as PlayerController).UpdateInteractionHint += hint => interactionHint.text = hint;
         }
 
-        private IEnumerator FadeOffWorldIn(){
+        private IEnumerator FadeEndIn(string text){
+            EndingDisplay.Q<Label>().text = text;
             var opacity = 0f;
-            OffWorldDisplay.style.display = DisplayStyle.Flex;
-            while(opacity < 1){
+            EndingDisplay.style.display = DisplayStyle.Flex;
+            while (opacity < 1){
                 yield return new WaitForEndOfFrame();
                 opacity += Time.deltaTime * FadeMultiplier;
-                OffWorldDisplay.style.opacity = opacity;
+                EndingDisplay.style.opacity = opacity;
             }
         }
     }
