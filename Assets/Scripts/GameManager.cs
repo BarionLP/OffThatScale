@@ -74,6 +74,7 @@ namespace Ametrin.KunstBLL{
 
         private void FireEndEvent(){
             OnGameCompleted?.Invoke();
+            SceneManager.LoadScene(Scene.Start, 3);
         }
     }
 }

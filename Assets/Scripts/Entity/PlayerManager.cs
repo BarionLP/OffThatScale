@@ -14,7 +14,6 @@ namespace Ametrin.KunstBLL.Entity{
             }
             Instance = this;
             WorldManager.OnPlayerLeftWorld += OnLeftWorld;
-            WorldManager.OnPlayerLeftWorld += OnLeftWorld;
         }
 
         private void Start(){

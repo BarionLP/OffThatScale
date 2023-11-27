@@ -1,5 +1,5 @@
 using System;
-using System.Threading;
+using System.Threading.Tasks;
 using UnityEngine;
 
 namespace Ametrin.KunstBLL{
@@ -15,6 +15,11 @@ namespace Ametrin.KunstBLL{
                 _ => Cursor.lockState = CursorLockMode.None,
                 // _ => throw new ArgumentException("Tried loading unknown scene", nameof(scene)),
             };
+        }
+
+        public static async void LoadScene(Scene scene, float delay){
+            await Task.Delay(TimeSpan.FromSeconds(delay));
+            LoadScene(scene);
         }
     }
 

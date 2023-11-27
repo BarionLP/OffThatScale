@@ -14,8 +14,8 @@ namespace Ametrin.KunstBLL{
             RootElement = GetComponent<UIDocument>().rootVisualElement;
             EndingDisplay = RootElement.Q<VisualElement>("Ending");
             EndingDisplay.style.display = DisplayStyle.None;
-            WorldManager.OnPlayerLeftWorld += () => StartCoroutine(FadeEndIn("You've wandered to far<br>There is no way back"));
-            GameManager.OnGameCompleted += () => StartCoroutine(FadeEndIn("You managed to get on the Planet.<br>Will you figure out what happend?"));
+            WorldManager.OnPlayerLeftWorld += OffWorld;
+            GameManager.OnGameCompleted += OnPlanet;
         }
 
         private void Start(){
@@ -32,6 +32,15 @@ namespace Ametrin.KunstBLL{
                 opacity += Time.deltaTime * FadeMultiplier;
                 EndingDisplay.style.opacity = opacity;
             }
+        }
+
+
+        private void OnPlanet() => StartCoroutine(FadeEndIn("You managed to get on the Planet.<br>Will you figure out what happend?"));
+        private void OffWorld() => StartCoroutine(FadeEndIn("You've wandered to far<br>There is no way back"));
+
+        private void OnDestroy(){
+            WorldManager.OnPlayerLeftWorld -= OffWorld;
+            GameManager.OnGameCompleted -= OnPlanet;
         }
     }
 }
