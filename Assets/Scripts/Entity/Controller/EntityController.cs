@@ -36,7 +36,7 @@ namespace Ametrin.KunstBLL.Entity.Controller{
         }
 
         protected void ThrowMainHandItem(){
-            MainHand.DismountItem();
+            MainHand.Item = ItemStack.Empty();
         }
 
         protected virtual void OnGravityChange(){

@@ -20,8 +20,7 @@ namespace Ametrin.KunstBLL.Items{
                 
                 if (_Item.IsEmpty) return;
                 _Item.Object.transform.SetParent(transform);
-                _Item.Object.transform.localPosition = Vector3.zero;
-                _Item.Object.transform.localRotation = Quaternion.identity;
+                _Item.Object.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
                 _Item.Object.layer = HOLDING_LAYER;
                 _Item.Object.TryGetComponent<Rigidbody>().Resolve(collider => collider.isKinematic = true);
                 _Item.Object.TryGetComponent<VisualEffect>().Resolve(effect => Effect = effect, ()=> Effect = null);
@@ -36,7 +35,7 @@ namespace Ametrin.KunstBLL.Items{
             Item.Type.OnUse(new(user, this, transform.position, lookDirection, Item));
         }
 
-        public void DismountItem(){
+        private void DismountItem(){
             if (_Item.IsEmpty) return;
 
             _Item.Object.transform.SetParent(GameManager.Instance.WorldRoot, true);
