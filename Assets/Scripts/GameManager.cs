@@ -27,7 +27,7 @@ namespace Ametrin.KunstBLL{
             PauseMenu.Hide();
             PauseAction.performed += PauseToggle;
             Physics.gravity = InitalGravity;
-            SpaceShip.OnEngineStarted += ShipStarted;
+            SpaceShip.OnEngineStarted.AddListener(ShipStarted);
         }
 
         private void Start(){

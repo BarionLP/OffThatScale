@@ -1,13 +1,14 @@
-using System;
 using System.Collections.Generic;
 using Ametrin.KunstBLL.GUI;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Ametrin.KunstBLL{
     public sealed class SpaceShipController : MonoBehaviour{
-        public event Action OnEngineStarted;
         [field: SerializeField] public float MaxShipWeight {get; private set; } = 1.3f;
         [field: SerializeField] public float CurrentShipWeight { get; private set; } = 1f;
+        public UnityEvent OnEngineStarted = new();
+        [SerializeField] private ParticleSystem[] ParticleSystems;
         public bool IsOverweight => CurrentShipWeight > MaxShipWeight;
 
         private ShipScreenController ScreenController;
@@ -30,6 +31,9 @@ namespace Ametrin.KunstBLL{
             OnEngineStarted?.Invoke();
             foreach(var collider in InShip){
                 collider.gameObject.SetActive(false);
+            }
+            foreach (var system in ParticleSystems){
+                system.Play();
             }
         }
 
