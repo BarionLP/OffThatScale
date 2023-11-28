@@ -9,6 +9,6 @@ namespace Ametrin.KunstBLL.Interaction{
             interactor.MainHand.Item = Item;
         }
 
-        public string GetDescription(IInteractor interactor, bool canInteract) => "Pick up";
+        public string GetDescription(IInteractor interactor, bool canInteract) => $"Pick up {Item.Type.DisplayName}";
     }
 }
