@@ -26,7 +26,7 @@ namespace Ametrin.KunstBLL.Entity.Controller{
         protected override void Awake(){
             base.Awake();
             GameManager.OnCutSceneFinished += ()=>{
-                UpdateInteractionHint.Invoke("WASD - Accelerate");
+                UpdateInteractionHint.Invoke("WASD - Move");
             };
         }
 
@@ -62,6 +62,7 @@ namespace Ametrin.KunstBLL.Entity.Controller{
             CheckInteraction();
 
             void CheckInteraction(){
+                if(GameManager.StartPlaying) return;
                 var colliders = Physics.OverlapSphere(Camera.position + Camera.forward * InteractionOffset, InteractionRadius, InteractionLayers);
                 if (colliders.Length > 0 && colliders[0].TryGetComponent<IInteractable>(out var interactable)){
                     if (SelectedInteractable == interactable) return;

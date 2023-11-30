@@ -8,11 +8,11 @@ Button {
     white-space: nowrap;
     -unity-font-style: normal;
     background-color: rgba(0, 0, 0, 0.48);
-    color: rgb(87, 25, 226);
-    border-left-color: rgb(87, 25, 226);
-    border-right-color: rgb(87, 25, 226);
-    border-top-color: rgb(87, 25, 226);
-    border-bottom-color: rgb(87, 25, 226);
+    color: rgb(129, 85, 229);
+    border-left-color: rgb(129, 85, 229);
+    border-right-color: rgb(129, 85, 229);
+    border-top-color: rgb(129, 85, 229);
+    border-bottom-color: rgb(129, 85, 229);
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
     border-bottom-right-radius: 8px;

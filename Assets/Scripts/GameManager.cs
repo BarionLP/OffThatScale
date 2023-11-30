@@ -12,6 +12,7 @@ namespace Ametrin.KunstBLL{
         public static event Action OnGameCompleted;
         public static bool IsZeroG => Physics.gravity == Vector3.zero;
         public static bool EndPlaying = false;
+        public static bool StartPlaying = false;
 
         [SerializeField] private Vector3 InitalGravity;
         [SerializeField] private PauseMenuController PauseMenu;
@@ -36,12 +37,14 @@ namespace Ametrin.KunstBLL{
             Cursor.lockState = CursorLockMode.Locked;
             PauseAction.Enable();
             OnGravityChange?.Invoke();
+            StartPlaying = true;
             Invoke(nameof(OnCutSceneFinish), (float)IntroDirector.duration);
         }
 
         private void OnCutSceneFinish(){
             OnCutSceneFinished.Invoke();
             PlayerInput.Enable();    
+            StartPlaying = false;
         }
 
         public static void PauseToggle(InputAction.CallbackContext context = default){
