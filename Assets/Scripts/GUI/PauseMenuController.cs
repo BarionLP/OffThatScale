@@ -20,6 +20,11 @@ namespace Ametrin.KunstBLL{
             exitButton.RegisterCallback<ClickEvent>(e=>{
                 SceneManager.LoadScene(Scene.Start);
             });
+
+            var quitButton = RootElement.Q<Button>("QuitButton");
+            quitButton.RegisterCallback<ClickEvent>(e=>{
+                Application.Quit();
+            });
         }
 
         public void Show(){
