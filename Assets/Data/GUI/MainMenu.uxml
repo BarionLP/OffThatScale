@@ -4,7 +4,7 @@
     <ui:VisualElement name="Root" style="flex-grow: 1; position: absolute; left: 0; bottom: 0; right: 50%; top: 20%; justify-content: center; align-items: flex-start;">
         <ui:VisualElement name="Buttons" style="align-self: center; width: 50%; justify-content: center;">
             <ui:Button text="Start" display-tooltip-when-elided="true" name="StartButton" />
-            <ui:Button text="Settings" display-tooltip-when-elided="true" name="SettingsButton" />
+            <ui:Button text="Settings" display-tooltip-when-elided="true" name="SettingsButton" picking-mode="Ignore" style="opacity: 0.5;" />
             <ui:Button text="Quit" display-tooltip-when-elided="true" name="QuitButton" />
         </ui:VisualElement>
     </ui:VisualElement>

@@ -3,8 +3,9 @@
     <ui:VisualElement name="Root" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0.5);">
         <ui:VisualElement name="Buttons" style="flex-grow: 1; width: 25%; align-items: stretch; align-self: center; justify-content: center;">
             <ui:Button text="Continue" display-tooltip-when-elided="true" name="ContinueButton" />
-            <ui:Button text="Settings" display-tooltip-when-elided="true" name="SettingsButton" />
+            <ui:Button text="Settings" display-tooltip-when-elided="true" name="SettingsButton" picking-mode="Ignore" style="opacity: 0.5;" />
             <ui:Button text="Main Menu" display-tooltip-when-elided="true" name="ExitButton" />
+            <ui:Button text="Quit" display-tooltip-when-elided="true" name="QuitButton" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>
